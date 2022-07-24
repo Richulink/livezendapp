@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Observable } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service';
 
 @Component({
@@ -9,7 +11,13 @@ import { AuthServiceService } from 'src/app/services/auth-service';
 export class FeedComponent implements OnInit {
 
   userLogged = this.authService.getUserLogger();
-  constructor(private authService: AuthServiceService) { }
+  
+  nota: Observable<any[]>;
+
+  
+  constructor(private authService: AuthServiceService,firestore: AngularFirestore) { 
+    this.nota = firestore.collection('notas').valueChanges();
+  }
 
   
   userLogOut() {

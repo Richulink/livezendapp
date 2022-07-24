@@ -1,0 +1,71 @@
+
+<nav class="navbar sticky-sm-top fixed-top navbar-dark bg-dark ">
+    <div class="container-fluid">
+    <a class="navbar-brand" >
+      <img src="..\assets\images\hojita.png" alt="" width="30" height="24" class="d-inline-block align-text-top"> 
+      <b class="fs-4 m-3">Livezenda</b>  
+    </a>
+
+   
+
+
+    <div class="dropdown  bg-dark ">
+      <button class="btn btn-secondary dropdown-toggle  bg-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" *ngIf ="userLogged|async as user; else btnIngresar">
+          
+        <a class="navbar-brand" *ngIf ="userLogged|async as user; else btnIngresar">
+          <img   style="border-radius:100%" *ngIf="user.photoURL"  alt="" [src]="user.photoURL"  width="30" class="d-inline-block align-text-top">
+             <!-- {{user.displayName? user.displayName : user.email}}    -->  
+        </a>
+      </button>
+    <ul class="dropdown-menu dropdown-menu-end bg-dark " aria-labelledby="dropdownMenuButton1">
+    
+      <div class="d-flex flex-column w-25 flex-shrink-0 text-white bg-dark" style="width: 280px;">
+        <a class="dropdown-item " style="color:#ffffff" (click)="userLogOut()" >
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-4">salir</span>
+        </a>
+        </div>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a class="dropdown-item " style="color:#ffffff"  href="#">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              Mi perfil
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item " style="color:#ffffff"  href="#">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item " style="color:#ffffff"  href="/feed">
+            
+              <svg class="bi me-2" width="16" height="16"></svg>
+              Noticias
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item " style="color:#ffffff"  href="#">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+              Mensajería
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item " style="color:#ffffff" (click)="userLogOut()" href="#">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
+              Cambiar cuenta
+            </a>
+          </li>
+        </ul>
+        <hr>
+    </ul>
+
+    <ng-template #btnIngresar >
+      <button class="btn btn-secondary" routerLink= "/inicio" >ingresar</button>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+

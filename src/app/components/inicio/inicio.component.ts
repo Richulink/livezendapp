@@ -9,9 +9,13 @@ import { AuthServiceService } from 'src/app/services/auth-service';
 })
 export class InicioComponent implements OnInit {
 
+
+  userLogged = this.authService.getUserLogger();
+  
   usuario = {
     email: "",
     password: ""
+
   }
   constructor(private authService: AuthServiceService) { }
 

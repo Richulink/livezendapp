@@ -18,6 +18,10 @@ export class ShareServiceService {
  getNotas(){
   return this.nota;  
  }
+
+ public createCat(data: {nuevaNota: string}) {
+  return this.db.collection('notas').add(data);
+}
    
    
 }

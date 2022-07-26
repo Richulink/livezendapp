@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { NotaServiceService } from 'src/app/services/nota-service.service';
 import { Nota } from 'src/app/interfaces/nota';
+import { NotaService } from 'src/app/services/nota.service';
 @Component({
   selector: 'app-notas',
   templateUrl: './notas.component.html',
@@ -14,7 +14,7 @@ export class NotasComponent implements OnInit {
   notaCrud : Nota [] = [];
 
   nota: Observable<any[]>;
-  constructor(firestore: AngularFirestore, private notaService: NotaServiceService) {
+  constructor(firestore: AngularFirestore, private notaService: NotaService) {
     this.nota = firestore.collection('notas').valueChanges();
     
    }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NotaService } from 'src/app/services/nota.service';
+
 
 @Component({
   selector: 'app-modal',
@@ -9,43 +10,58 @@ import { NotaService } from 'src/app/services/nota.service';
 })
 export class ModalComponent implements OnInit {
 
-  crearNota: FormGroup;
+  crear_nota: FormGroup;
 
 
-  submitted = false; 
+  submitted = false;
 
   public cats = [];
-  constructor( private firestoreService: NotaService, private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+     private notaService: NotaService,
+    ) {
 
 
-    this.crearNota= this.fb.group({
+    this.crear_nota = this.fb.group({
 
-      nonbreNota: ['', Validators.required],
+      nombre_nota: ['', Validators.required],
       descripcion: ['', Validators.required]
     })
 
-   }
+  }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
 
   agregarNota() {
-    
-    this.submitted= true;
-if(this.crearNota.invalid){
-  return;
+
+    this.submitted = true;
+    if (this.crear_nota.invalid) {
+      return;
+    }
+    const nuevaNota: any = {
+      nombre_nota: this.crear_nota.value.nombre_nota,
+      descripcion: this.crear_nota.value.descripcion,
+      fechade_creacion: new Date()
+
+      //agregar el uid y la foto de perfil
+    }
+
+    this.notaService.agregarNota(nuevaNota).then(() => {
+      console.log('nota regsitrada con exito')
+
+    }).catch(error => {
+      console.log(error);
+    })
+
+  }
+
+
+
 }
 
-    console.log(this.crearNota); 
-  }
-
-
-  }
 
 
 
 
 
-  
 

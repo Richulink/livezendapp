@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { Nota } from 'src/app/interfaces/nota';
 import { AuthServiceService } from 'src/app/services/auth-service';
+import { NotaService } from 'src/app/services/nota.service';
 
 @Component({
   selector: 'app-feed',
@@ -13,27 +13,41 @@ export class FeedComponent implements OnInit {
 
   userLogged = this.authService.getUserLogger();
   
- // nota: Observable<any[]>;
+  nota: Observable<any[]>;
+  notas: any[] = [];
 
   
-  constructor(private authService: AuthServiceService,firestore: AngularFirestore) { 
+  constructor(private authService: AuthServiceService,
+    firestore: AngularFirestore, 
+    private notaService : NotaService) { 
 
-
-    //this.nota = firestore.collection('notas').valueChanges();
-    // *ngFor="let notas of nota | async" -en html
-
-    const shirtsCollection = firestore.collection<Nota>('notas');
-    shirtsCollection.add({ descripcion: 'item', nota: 'sola' });
-    
+    this.nota = firestore.collection('notas').valueChanges();
+    // *ngFor="let notas of nota | async" 
   }
-  
+  ngOnInit(): void {
+    this.getNotas();
+  }
 
+    getNotas(){
+      this.notaService.getNotas().subscribe ( data =>{
+      this.notas = [];
+      
+     data.forEach((element:any) => {
+          //console.log(element.payload.doc.data());
+          //console.log(element.payload.doc.id);
+          this.notas.push({
+            id: element.payload.doc.id,
+            ...element.payload.doc.data()
+          })
+        });
+        console.log(this.notas)
+      });
+    }
+    
 
-  
   userLogOut() {
     this.authService.logout();
   }
-  ngOnInit(): void {
-  }
+  
 
 }

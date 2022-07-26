@@ -21,7 +21,6 @@ export class InicioComponent implements OnInit {
 
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   ingresarConGoogle(): void {  // el nombre de este metodo es el que se usa en el html para llamarlo

@@ -1,12 +1,12 @@
 
 <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<form class="modal-dialog"  [formGroup]= crearNota (ngSubmit)="agregarNota()">
+<form class="modal-dialog"  [formGroup]= crear_nota (ngSubmit)="agregarNota()">
   <div class="modal-content"   >
 
     <div class="modal-header ">
 
-       <input  type="text" placeholder="Nombre de la nota" formControlName="nonbreNota" class="form-control red-input gray " aria-label="Username">
+       <input  type="text" placeholder="Nombre de la nota" formControlName="nombre_nota" class="form-control red-input gray " aria-label="Username">
       
        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
@@ -21,7 +21,8 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
     
 
     <button type="submit" class="btn btn-secondary btn-lg btn-block p-3 m-2 "> 
-      <span class="badge badge-danger" *ngIf="submitted && crearNota.invalid" >faltan elementos</span>
+      <span class="badge badge-danger" *ngIf="submitted && crear_nota.invalid" >faltan elementos</span>
+
 
       Publicar</button>
  

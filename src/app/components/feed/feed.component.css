@@ -13,6 +13,10 @@
     height: auto;
     background-color: rgb(243, 243, 243);
 }
+#fondoP{
+   height: auto;
+   background-color: rgb(199, 49, 49);
+}
  .sombra{
     box-shadow: 1px 1px rgb(184, 236, 195), -0.2em 0 0.4em rgb(166, 209, 173);
  }
@@ -30,3 +34,6 @@
     right: -20px;
  }
 
+ .martop{
+   margin-top: 56px;
+ }

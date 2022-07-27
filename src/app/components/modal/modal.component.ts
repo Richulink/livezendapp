@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthServiceService } from 'src/app/services/auth-service';
 import { NotaService } from 'src/app/services/nota.service';
 
 
@@ -12,11 +13,12 @@ export class ModalComponent implements OnInit {
 
   crear_nota: FormGroup;
 
-
+  userLogged = this.authService.getUserLogger();
   submitted = false;
 
   public cats = [];
   constructor(private fb: FormBuilder,
+    private authService: AuthServiceService,
      private notaService: NotaService,
     ) {
 
@@ -25,6 +27,8 @@ export class ModalComponent implements OnInit {
 
       nombre_nota: ['', Validators.required],
       descripcion: ['', Validators.required]
+      //id_usuario: this.authService.
+
     })
 
   }
@@ -41,6 +45,7 @@ export class ModalComponent implements OnInit {
     const nuevaNota: any = {
       nombre_nota: this.crear_nota.value.nombre_nota,
       descripcion: this.crear_nota.value.descripcion,
+
       fechade_creacion: new Date()
 
       //agregar el uid y la foto de perfil
@@ -48,15 +53,14 @@ export class ModalComponent implements OnInit {
 
     this.notaService.agregarNota(nuevaNota).then(() => {
       console.log('nota regsitrada con exito')
+      alert('SUCCESS!! :-)');
 
     }).catch(error => {
       console.log(error);
     })
 
   }
-
-
-
+ 
 }
 
 

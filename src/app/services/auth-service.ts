@@ -71,4 +71,15 @@ export class AuthServiceService {
       window.alert(error);
     });
 }
+
+
+/*
+async UpdateProfile(displayName: string) {
+  const profile = {
+      displayName: displayName,
+      photoURL: "https://example.com/jane-q-user/profile.jpg"
+  }
+  return (await this.afauth.currentUser).updateProfile(profile);
+}
+*/
 }

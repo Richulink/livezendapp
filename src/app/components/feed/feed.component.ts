@@ -31,7 +31,7 @@ export class FeedComponent implements OnInit {
     getNotas(){
       this.notaService.getNotas().subscribe ( data =>{
       this.notas = [];
-      
+
      data.forEach((element:any) => {
           //console.log(element.payload.doc.data());
           //console.log(element.payload.doc.id);
@@ -44,10 +44,21 @@ export class FeedComponent implements OnInit {
       });
     }
     
+    eliminarNota(id: string){
+
+      return this.notaService.eliminarNota(id).then (()=>{
+        console.log('nota eliminada con exito')
+      })
+    }
 
   userLogOut() {
     this.authService.logout();
   }
+    
+  }
+ 
+  
+  
   
 
-}
+

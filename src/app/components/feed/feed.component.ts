@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 import { Observable } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service';
 import { NotaService } from 'src/app/services/nota.service';
@@ -13,20 +14,31 @@ export class FeedComponent implements OnInit {
 
   userLogged = this.authService.getUserLogger();
   
-  nota: Observable<any[]>;
+  //nota: Observable<any[]>;
   notas: any[] = [];
 
   
   constructor(private authService: AuthServiceService,
     firestore: AngularFirestore, 
-    private notaService : NotaService) { 
+    private notaService : NotaService,
+    
+    ) { 
 
-    this.nota = firestore.collection('notas').valueChanges();
+//    this.nota = firestore.collection('notas').valueChanges();
     // *ngFor="let notas of nota | async" 
   }
   ngOnInit(): void {
     this.getNotas();
   }
+
+  obtenerUsarioLogeado(){
+  this.authService.getUserLogger().subscribe(res=>{
+
+    console.log(res?.email);
+  }) 
+  }
+
+
 
     getNotas(){
       this.notaService.getNotas().subscribe ( data =>{
@@ -36,7 +48,7 @@ export class FeedComponent implements OnInit {
           //console.log(element.payload.doc.data());
           //console.log(element.payload.doc.id);
           this.notas.push({
-            id: element.payload.doc.id,
+            id: element.payload.doc.id, //la variable id recuperar todos los id de cualquier tipo 
             ...element.payload.doc.data()
           })
         });
@@ -45,10 +57,11 @@ export class FeedComponent implements OnInit {
     }
     
     eliminarNota(id: string){
-
-      return this.notaService.eliminarNota(id).then (()=>{
-        console.log('nota eliminada con exito')
-      })
+      try {
+        this.notaService.eliminarNota(id);
+      } catch (error) {
+        console.log(error);
+      }
     }
 
   userLogOut() {

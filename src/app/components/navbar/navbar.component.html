@@ -9,7 +9,7 @@
    
 
 
-    <div class="dropdown  bg-dark ">
+    <div class="dropdown  bg-dark " width="70">
       <button class="btn btn-secondary dropdown-toggle  bg-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" *ngIf ="userLogged|async as user; else btnIngresar">
           
         <a class="navbar-brand" *ngIf ="userLogged|async as user; else btnIngresar">
@@ -19,7 +19,7 @@
       </button>
     <ul class="dropdown-menu dropdown-menu-end bg-dark " aria-labelledby="dropdownMenuButton1">
     
-      <div class="d-flex flex-column w-25 flex-shrink-0 text-white bg-dark" style="width: 280px;">
+      <div class="d-flex flex-column  flex-shrink-0 text-white bg-dark" >
         <a class="dropdown-item " style="color:#ffffff" (click)="userLogOut()" >
           <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
           <span class="fs-4">salir</span>

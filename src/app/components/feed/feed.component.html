@@ -1,13 +1,13 @@
 <app-navbar></app-navbar>
 
-
 <!-- la clase ner tardo en andar-->
 <div id="fondo" class="ner position-relative bottom-0 pt-4 ">
     <div class="container mt-4 mb-6 ">
         <div class="d-flex justify-content-center row  ">
             <div class="col-md-8  ">
-
-                <app-modal></app-modal>
+         
+                <app-modal></app-modal> 
+                <app-edit-nota> </app-edit-nota>
 
                 <div class="feed ">
                     <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white sombra martop"
@@ -19,9 +19,16 @@
 
 
  <!--ingresar texto modal-->
-                        <input class="form-control " style="border-radius: 15px;"
+                        <input class="form-control" style="border-radius: 15px;"
                             placeholder=" Crea una nueva publicación" href="/feed" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
+                            data-bs-target="#staticBackdrop" readonly>
+
+
+
+
+
+
+
 
 
 <!--ingresar imagen-->
@@ -56,7 +63,7 @@
 
                                 </div>
 
-
+                                
 
                                 <div class="p-3">
                                     <div class="dropdown">
@@ -67,8 +74,13 @@
 
                                         </button>
                                         <ul class="dropdown-menu" >
-                                            <li><a class="dropdown-item"  > 
-                                                <i  class="bi bi-pencil-square"></i> Editar</a>
+                                            <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModalLong"  >
+                                                
+<!--edit modal--> 
+                                                <i  class="bi bi-pencil-square"  
+                                                 > 
+                                            </i> Editar </a>
+                                            
                                             </li>
                                             <li><a class="dropdown-item" (click)="eliminarNota(notas.id)"> 
                                                 <i  class="bi bi-eraser-fill"></i> Borrar</a>
@@ -99,19 +111,15 @@
 
                         </div>
 
-
-
-
-
                     </div>
 
                     <div class="d-flex justify-content-end socials p-2 py-3"><i class="fa fa-thumbs-up"></i><i
                             class="fa fa-comments-o"></i><i class="fa fa-share"></i></div>
 
-
-
-
                     <ng-template #btnIngresar>
 
                     </ng-template>
                 </div>
+
+
+         

@@ -1,0 +1,8 @@
+textarea{
+    
+   
+    background: transparent;
+    border: none;
+    outline: none;
+}
+::placeholder { color: blue; }  

@@ -14,6 +14,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EditNotaComponent } from './components/edit-nota/edit-nota.component';
+
 
 
 @NgModule({
@@ -24,14 +26,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     FeedComponent,
     NavbarComponent,
-    ModalComponent
+    ModalComponent,
+    
+    
+    EditNotaComponent
   ],
   imports: [
-
+   
     FormsModule,
     NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
+  
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     ReactiveFormsModule,

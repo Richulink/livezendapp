@@ -18,10 +18,9 @@ export class NotaService {
     return this.firestore.collection('notas' , ref => ref.orderBy ('fechade_creacion','desc')).snapshotChanges();
   }
 
-  eliminarNota(id:string){
-    console.log('nota eliminada con exito');
+  eliminarNota(id:string): Promise<any>{
+    console.log('nota eliminada con exito');  
     return this.firestore.collection('notas').doc(id).delete() ;
-    
   }
 
 

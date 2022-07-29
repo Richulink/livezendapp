@@ -50,9 +50,12 @@ export class ModalComponent implements OnInit {
 
       //agregar el uid y la foto de perfil
     }
+   
 
-    this.notaService.agregarNota(nuevaNota).then(() => {
-      console.log('nota regsitrada con exito')
+    this.notaService.agregarNota(nuevaNota).then(() => { 
+
+
+      console.log('nota regsitrada con exito');
       alert('SUCCESS!! :-)');
 
     }).catch(error => {

@@ -38,8 +38,6 @@ export class FeedComponent implements OnInit {
   }) 
   }
 
-
-
     getNotas(){
       this.notaService.getNotas().subscribe ( data =>{
       this.notas = [];

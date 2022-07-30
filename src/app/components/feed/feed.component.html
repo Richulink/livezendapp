@@ -7,7 +7,42 @@
             <div class="col-md-8  ">
          
                 <app-modal></app-modal> 
-                <app-edit-nota> </app-edit-nota>
+<!-- modal edit-->
+                <div class="modal fade " id="exampleModalLong"   tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content sombra2" style="border-radius: 20px;">
+                  
+                        
+                        <div class="modal-body ">
+                  
+                          
+                          <h4>  <i  class="bi bi-pencil-square m-2"> 
+                          </i>Titulo</h4>
+                          <input style="border-radius: 15px ;"  type="text" placeholder="Nuevo Título"  class="form-control red-input  p-2 " aria-label="Username">
+                          
+                        <div class="p-2">
+                  
+                            <!--[(ngModel)]= "nuevaDescripcion" -->
+                        
+                          <textarea  style="border-radius: 8px;" class="  p-2 form-control "  placeholder= "" rows="15" id="message-text" >     
+                          </textarea>
+                        </div>
+                        
+                        </div>
+                        <div class="modal-footer ">
+                          <button type="button" class="btn btn-success bordeboton float-sm-start" >Limpiar</button>
+                          <button type="button" class="btn btn-secondary bordeboton m-2" data-bs-dismiss="modal">Cerrar</button>
+                          
+                          <button type="button" class="btn btn-primary bordeboton "> Guardar cambios</button>
+                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+<!-- / modal edit-->
+                
+
 
                 <div class="feed ">
                     <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white sombra martop"
@@ -67,7 +102,7 @@
 
                                         </button>
                                         <ul class="dropdown-menu" >
-                                            <li><a class="dropdown-item" [routerLink]="['/feed/',notas.id]" data-bs-toggle="modal" data-bs-target="#exampleModalLong"  >
+                                            <li><a class="dropdown-item" [routerLink]="['/feed/',notas.id]" (click)="getNotasById(notas.descripcion)" data-bs-toggle="modal" data-bs-target="#exampleModalLong"  >
                                                 
 <!--edit modal--> 
                                                 <i  class="bi bi-pencil-square"> 
@@ -96,7 +131,6 @@
 
 
                                     </div>
-
 
                                 </div>
                             </span>

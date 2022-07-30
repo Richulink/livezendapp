@@ -1,3 +1,4 @@
+import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -13,71 +14,84 @@ import { NotaService } from 'src/app/services/nota.service';
 })
 export class FeedComponent implements OnInit {
 
+
+  nuevaDescripcion : 'id' | undefined;// lleva y traer del modal edite 
   
 
+
   userLogged = this.authService.getUserLogger();
-  
+
   //nota: Observable<any[]>;
   notas: any[] = [];
 
-  
+
   constructor(private authService: AuthServiceService,
-    firestore: AngularFirestore, 
-    private notaService : NotaService,
+    firestore: AngularFirestore,
+    private notaService: NotaService,
 
-    
-    ) { 
 
-//    this.nota = firestore.collection('notas').valueChanges();
+  ) {
+
+    //    this.nota = firestore.collection('notas').valueChanges();
     // *ngFor="let notas of nota | async" 
   }
   ngOnInit(): void {
     this.getNotas();
   }
 
-  obtenerUsarioLogeado(){
-  this.authService.getUserLogger().subscribe(res=>{
+  obtenerUsarioLogeado() {
+    this.authService.getUserLogger().subscribe(res => {
 
-    console.log(res?.email);
-  }) 
+      console.log(res?.email);
+    })
   }
 
-    getNotas(){
-      this.notaService.getNotas().subscribe ( data =>{
+  getNotas() {
+    this.notaService.getNotas().subscribe(data => {
       this.notas = [];
 
-     data.forEach((element:any) => {
-          //console.log(element.payload.doc.data());
-          //console.log(element.payload.doc.id);
-          this.notas.push({
-            id: element.payload.doc.id, //la variable id recuperar todos los id de cualquier tipo 
-            ...element.payload.doc.data()
-          })
-        });
-        console.log(this.notas)
+      data.forEach((element: any) => {
+        //console.log(element.payload.doc.data());
+        //console.log(element.payload.doc.id);
+        this.notas.push({
+          id: element.payload.doc.id, //la variable id recuperar todos los id de cualquier tipo 
+          ...element.payload.doc.data()
+        })
       });
+      console.log(this.notas)
+    });
+  }
+
+
+  eliminarNota(id: string) {
+    try {
+      this.notaService.eliminarNota(id);
+    } catch (error) {
+      console.log(error);
     }
-    
-    
-    eliminarNota(id: string){
-      try {
-        this.notaService.eliminarNota(id);
-      } catch (error) {
-        console.log(error);
-      }
-    }
+  }
 
   userLogOut() {
     this.authService.logout();
   }
 
-
-  
- 
+  getNotasById(id: string) {
+    this.notaService.getNota(id);
   }
- 
-  
-  
-  
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
 
 

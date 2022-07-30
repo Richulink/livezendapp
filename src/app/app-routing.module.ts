@@ -26,7 +26,7 @@ const routes: Routes = [
     component:RegisterComponent
   },
   { path: 'feed',component:FeedComponent},
-  { path: 'feed/:id',component:ModalComponent},
+  { path: 'feed/:id',component:FeedComponent},
 
 
 

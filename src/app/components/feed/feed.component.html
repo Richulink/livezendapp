@@ -24,13 +24,6 @@
                             data-bs-target="#staticBackdrop" readonly>
 
 
-
-
-
-
-
-
-
 <!--ingresar imagen-->
                         <div class="feed-icon px-2" >
                             <i class="fa fa-long-arrow-up text-black-50"></i>
@@ -74,11 +67,10 @@
 
                                         </button>
                                         <ul class="dropdown-menu" >
-                                            <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#exampleModalLong"  >
+                                            <li><a class="dropdown-item" [routerLink]="['/feed/',notas.id]" data-bs-toggle="modal" data-bs-target="#exampleModalLong"  >
                                                 
 <!--edit modal--> 
-                                                <i  class="bi bi-pencil-square"  
-                                                 > 
+                                                <i  class="bi bi-pencil-square"> 
                                             </i> Editar </a>
                                             
                                             </li>
@@ -100,7 +92,7 @@
                                         <p style="color:#ffffff">{{notas.nombre_nota}}</p>
                                     </h6>
                                     <div class="container ">
-                                        <p id=""> {{notas.descripcion}}</p>
+                                        <p > {{notas.descripcion}}</p>
 
 
                                     </div>

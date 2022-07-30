@@ -13,10 +13,22 @@ export class NotaService {
   agregarNota (nuevaNota: any): Promise <any> {
     return this.firestore.collection('notas').add(nuevaNota);
   }
-   //Obtiene todos las notas
+   //Obtiene todos las notas 
    public getNotas(): Observable <any> {
     return this.firestore.collection('notas' , ref => ref.orderBy ('fechade_creacion','desc')).snapshotChanges();
   }
+
+  public getNota(id: string): Observable<any> {
+    return this.firestore.collection('notas').doc(id).snapshotChanges();
+  }
+
+  
+  public editarNota(id: string): Observable<any> {
+    return this.firestore.collection('notas').doc(id).snapshotChanges();
+  }
+
+
+
 
   eliminarNota(id:string): Promise<any>{
     console.log('nota eliminada con exito');  

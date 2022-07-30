@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service';
 import { NotaService } from 'src/app/services/nota.service';
 
@@ -15,24 +16,27 @@ export class ModalComponent implements OnInit {
 
   userLogged = this.authService.getUserLogger();
   submitted = false;
+  id: string | null;
 
-  public cats = [];
   constructor(private fb: FormBuilder,
     private authService: AuthServiceService,
-     private notaService: NotaService,
-    ) {
+    private notaService: NotaService,
+    private aRoute: ActivatedRoute
+  ) {
 
 
     this.crear_nota = this.fb.group({
 
       nombre_nota: ['', Validators.required],
-      descripcion: ['', Validators.required]
-      //id_usuario: this.authService.
-
+      descripcion: ['', Validators.required],
+     // fechade_creacion: ['', Validators.required]
     })
-
+    this.id = this.aRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
   }
   ngOnInit(): void {
+    this.editarNota();
+
   }
 
 
@@ -50,9 +54,9 @@ export class ModalComponent implements OnInit {
 
       //agregar el uid y la foto de perfil
     }
-   
 
-    this.notaService.agregarNota(nuevaNota).then(() => { 
+
+    this.notaService.agregarNota(nuevaNota).then(() => {
 
 
       console.log('nota regsitrada con exito');
@@ -63,7 +67,18 @@ export class ModalComponent implements OnInit {
     })
 
   }
- 
+
+  
+ editarNota(){
+
+  if(this.id !== null){  
+    
+    this.notaService.getNota(this.id).subscribe(nota =>{
+      console.log(nota.payload.data()['nombre_nota']);
+    })
+  }
+  }
+
 }
 
 

@@ -5,12 +5,15 @@ import { Observable } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service';
 import { NotaService } from 'src/app/services/nota.service';
 
+
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
+
+  
 
   userLogged = this.authService.getUserLogger();
   
@@ -21,6 +24,7 @@ export class FeedComponent implements OnInit {
   constructor(private authService: AuthServiceService,
     firestore: AngularFirestore, 
     private notaService : NotaService,
+
     
     ) { 
 
@@ -54,6 +58,7 @@ export class FeedComponent implements OnInit {
       });
     }
     
+    
     eliminarNota(id: string){
       try {
         this.notaService.eliminarNota(id);
@@ -65,7 +70,10 @@ export class FeedComponent implements OnInit {
   userLogOut() {
     this.authService.logout();
   }
-    
+
+
+  
+ 
   }
  
   

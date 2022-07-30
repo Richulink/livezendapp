@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NotaService } from 'src/app/services/nota.service';
 
 @Component({
   selector: 'app-edit-nota',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditNotaComponent implements OnInit {
 
-  constructor() { }
+
+  
+
+  constructor(private notaService : NotaService) { }
 
   ngOnInit(): void {
+    
   }
 
+
+
+
 }
+

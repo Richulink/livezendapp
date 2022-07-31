@@ -1,6 +1,8 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service';
@@ -15,36 +17,57 @@ import { NotaService } from 'src/app/services/nota.service';
 export class FeedComponent implements OnInit {
 
 
-  nuevaDescripcion : 'id' | undefined;// lleva y traer del modal edite 
-  
-
-
-  userLogged = this.authService.getUserLogger();
+  submitted = false;
+  id: string | null;
+  crear_nota: FormGroup;
 
   //nota: Observable<any[]>;
   notas: any[] = [];
 
 
+
   constructor(private authService: AuthServiceService,
     firestore: AngularFirestore,
     private notaService: NotaService,
-
-
+    private fb: FormBuilder,
+    private aRoute: ActivatedRoute
   ) {
 
-    //    this.nota = firestore.collection('notas').valueChanges();
-    // *ngFor="let notas of nota | async" 
+   
+    this.crear_nota = this.fb.group({
+
+      nombre_nota: ['', Validators.required],
+      descripcion: ['', Validators.required],
+     // fechade_creacion: ['', Validators.required]
+    })
+    this.id = this.aRoute.snapshot.paramMap.get('id');
+    console.log(this.id);
   }
   ngOnInit(): void {
     this.getNotas();
+   
   }
 
-  obtenerUsarioLogeado() {
-    this.authService.getUserLogger().subscribe(res => {
-
-      console.log(res?.email);
+  agregarNota() {
+    this.submitted = true;
+    if (this.crear_nota.invalid) {
+      return;
+    }
+    const nuevaNota: any = {
+      nombre_nota: this.crear_nota.value.nombre_nota,
+      descripcion: this.crear_nota.value.descripcion,
+      fechade_creacion: new Date()
+      //agregar el uid y la foto de perfil
+    }
+    this.notaService.agregarNota(nuevaNota).then(() => {
+      console.log('nota regsitrada con exito');
+      //alert('SUCCESS!! :-)');
+    }).catch(error => {
+      console.log(error);
     })
   }
+
+ 
 
   getNotas() {
     this.notaService.getNotas().subscribe(data => {
@@ -62,6 +85,15 @@ export class FeedComponent implements OnInit {
     });
   }
 
+  editarNota(){
+
+    if(this.id !== null){  
+      
+      this.notaService.getNota(this.id).subscribe(nota =>{
+        console.log(nota.payload.data()['nombre_nota']);
+      })
+    }
+    }
 
   eliminarNota(id: string) {
     try {
@@ -70,11 +102,6 @@ export class FeedComponent implements OnInit {
       console.log(error);
     }
   }
-
-  userLogOut() {
-    this.authService.logout();
-  }
-
   getNotasById(id: string) {
     this.notaService.getNota(id);
   }
@@ -85,8 +112,17 @@ export class FeedComponent implements OnInit {
 
 
 
+  //del usuadio
+  userLogged = this.authService.getUserLogger();
+  userLogOut() {
+    this.authService.logout();
+  }
+  obtenerUsarioLogeado() {
+    this.authService.getUserLogger().subscribe(res => {
 
-
+      console.log(res?.email);
+    })
+  }
 
 }
 

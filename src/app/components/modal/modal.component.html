@@ -1,43 +1,4 @@
 
-<div class="modal fade rounded "id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<form class="modal-dialog" [formGroup]= crear_nota (ngSubmit)="agregarNota()">
-  <div class="modal-content"    >
-
-    <div  class="modal-header " >
-      
-       <input style="border-radius: 15px ;"  type="text" placeholder="Nombre de la nota" formControlName="nombre_nota" class="form-control red-input " aria-label="Username">
-      
-       <button type="reset" value = "limpiarFormulario  "class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-
-    <div   class="modal-body"  >
-
-
-      <textarea  style="border-radius: 8px;" class="form-control red-input gray " placeholder= "Escriba la nota" formControlName="descripcion" rows="15" id="message-text" >
-        
-         
-      </textarea>
-    
-      
-    </div>
-    
-    <p Style = "text-align:center; color: #FF0000 ;" *ngIf="submitted && crear_nota.invalid" >los elementos estan vacíos</p>
-    <button type="submit" class="btn btn-outline-success btn-lg btn-block p-3 m-2 " > 
-     
-
-
-      Publicar</button>
-      
- 
- 
-  </div>
-</form>
-
-
-</div>
-
-
 
 
 

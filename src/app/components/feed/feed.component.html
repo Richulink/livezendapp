@@ -74,7 +74,7 @@
                         <div>
                             <div class="d-flex flex-row justify-content-between align-items-center  border-bottom ">
                                 <div class="d-flex flex-row align-items-center feed-text px-2"
-                                    *ngIf="userLogged|async as user; else btnIngresar">
+                                    *ngIf= "userLogged|async as user; else btnIngresar">
                                     <img class="rounded-circle" [src]="user.photoURL" width="45">
                                     <div class="d-flex flex-column flex-wrap ml-2 ">
 

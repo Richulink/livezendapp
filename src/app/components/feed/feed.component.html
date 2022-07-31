@@ -34,7 +34,7 @@
                             </div>
                             <div class="modal-footer ">
                                 <button type="button" class="btn btn-success bordeboton float-sm-start">Limpiar</button>
-                                <button type="button" class="btn btn-secondary bordeboton m-2"
+                                <button type="button" class="btn btn-secondary bordeboton m-2"[routerLink]= "['/feed']"
                                     data-bs-dismiss="modal">Cerrar</button>
 
                                 <button type="button" class="btn btn-primary bordeboton "> Guardar cambios</button>
@@ -78,9 +78,9 @@
                 <div class="feed ">
                     <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white sombra martop"
                         style="border-radius: 22px;">
-                        <div class="d-flex flex-row align-items-center feed-text px-2"
-                            *ngIf="userLogged|async as user; else btnIngresar">
-                            <img class="rounded-circle" [src]="user.photoURL" width="35">
+                        <div class="d-flex flex-row align-items-center feed-text px-2"  
+                        *ngIf= "userLogged|async as user; else btnIngresar">
+                            <img class="rounded-circle" [src] =" user.photoURL" width="35">
                         </div>
 
 

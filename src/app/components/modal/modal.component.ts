@@ -11,8 +11,9 @@ import { NotaService } from 'src/app/services/nota.service';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    
   }
 
  

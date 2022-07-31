@@ -16,6 +16,8 @@ import { NotaService } from 'src/app/services/nota.service';
 })
 export class FeedComponent implements OnInit {
 
+  userLogged = this.authService.getUserLogger() ;
+
 
   submitted = false;
   id: string | null;
@@ -47,6 +49,17 @@ export class FeedComponent implements OnInit {
     this.getNotas();
    
   }
+
+   //del usuadio
+   userLogOut() {
+    this.authService.logout();
+  }
+  obtenerUsarioLogeado() {
+    this.authService.getUserLogger().subscribe(res => {
+      console.log(res?.email);
+    })
+  }
+
 
   agregarNota() {
     this.submitted = true;
@@ -86,9 +99,7 @@ export class FeedComponent implements OnInit {
   }
 
   editarNota(){
-
     if(this.id !== null){  
-      
       this.notaService.getNota(this.id).subscribe(nota =>{
         console.log(nota.payload.data()['nombre_nota']);
       })
@@ -112,18 +123,7 @@ export class FeedComponent implements OnInit {
 
 
 
-  //del usuadio
-  userLogged = this.authService.getUserLogger();
-  userLogOut() {
-    this.authService.logout();
-  }
-  obtenerUsarioLogeado() {
-    this.authService.getUserLogger().subscribe(res => {
-
-      console.log(res?.email);
-    })
-  }
-
+ 
 }
 
 

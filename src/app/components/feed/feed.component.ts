@@ -52,7 +52,7 @@ export class FeedComponent implements OnInit {
      // fechade_creacion: ['', Validators.required]
     })
     this.id = this.aRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
+    //console.log(this.id);
   }
 
 

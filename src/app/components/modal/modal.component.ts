@@ -1,7 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { NotaService } from 'src/app/services/nota.service';
 
@@ -30,20 +31,16 @@ export class ModalComponent implements OnInit {
   constructor(public notaService: NotaService,
     firestore: AngularFirestore,
     private fb: FormBuilder,
-    private aRoute: ActivatedRoute) {
-
-      
+    private aRoute: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService
+   
+    ) {
     this.crear_nota = this.fb.group({
-
       nombre_nota: ['', Validators.required],
       descripcion: ['', Validators.required],
-     // fechade_creacion: ['', Validators.required]
     })
-    this.id = this.aRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
   }
-     
-
 
   @Input() userUid: string = null;
   @ViewChild('btnClose') btnClose: ElementRef 
@@ -51,7 +48,7 @@ export class ModalComponent implements OnInit {
   
   
   
-  agregarNota() {
+   actualizarNota() {
     this.submitted = true;
     const editNota: any ={
       id: this.notaService.selectedNota.id,
@@ -59,10 +56,16 @@ export class ModalComponent implements OnInit {
       descripcion: this.notaService.selectedNota.descripcion,   
     }
 
-   this.notaService.actualizarNota(editNota);
-    
+   this.notaService.actualizarNota(editNota).then(() => {
+    this.toastr.info('Su nota fue modificada', '', {
+      positionClass: 'toast-bottom-right'
+    })
+   // crear funcion para cerrar el modal
+  
+})
+   }
 }
-}
+
 
 
 

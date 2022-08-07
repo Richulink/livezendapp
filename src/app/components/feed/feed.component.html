@@ -135,9 +135,10 @@
                             <span>
                                 <div id="fpapel" class="rounded ">
                                     <h6 class="sombra2" style="background-color: #3b492d">
-                                        <p style="color:#ffffff">{{notas.nombre_nota}}</p>
+                                        <p style="color:#ffffff"> {{notas.fechade_creacion * 1000 | date:'MM/dd h:mm a'}}</p>
                                     </h6>
                                     <div class="container ">
+                                        <h2 class="">{{notas.nombre_nota}}</h2>
                                         <p> {{notas.descripcion}}</p>
 
 

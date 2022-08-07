@@ -17,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { EditNotaComponent } from './components/edit-nota/edit-nota.component';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfigComponent } from './components/modal-config/modal-config.component';
+import { ToastInjector, ToastrModule } from 'ngx-toastr';
 
 
 
@@ -50,6 +51,7 @@ import { ModalConfigComponent } from './components/modal-config/modal-config.com
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,
+    ToastrModule.forRoot()
  
   ],
   providers: [NgbActiveModal],

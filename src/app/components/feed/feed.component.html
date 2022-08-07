@@ -7,44 +7,8 @@
             <div class="col-md-8  ">
 
                 <app-modal></app-modal>
-<!-- modal edit-->
-                <div class="modal fade " id="exampleModalLong" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content sombra2" style="border-radius: 20px;">
 
-
-                            <div class="modal-body ">
-
-
-                                <h4> <i class="bi bi-pencil-square m-2">
-                                    </i>Titulo</h4>
-                                <input style="border-radius: 15px ;" type="text" placeholder="Nuevo Título"
-                                    class="form-control red-input  p-2 " aria-label="Username">
-
-                                <div class="p-2">
-
-                                    <!--[(ngModel)]= "nuevaDescripcion" -->
-
-                                    <textarea style="border-radius: 8px;" class="  p-2 form-control " placeholder=""
-                                        rows="15" id="message-text">
-                          </textarea>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer ">
-                                <button type="button" class="btn btn-success bordeboton float-sm-start">Limpiar</button>
-                                <button type="button" class="btn btn-secondary bordeboton m-2"[routerLink]= "['/feed']"
-                                    data-bs-dismiss="modal">Cerrar</button>
-
-                                <button type="button" class="btn btn-primary bordeboton "> Guardar cambios</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- / modal edit-->
+               
 
 <!-- modal crear-->
                 <div class="modal fade rounded " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -52,7 +16,7 @@
                     <form class="modal-dialog" [formGroup]=crear_nota (ngSubmit)="agregarNota()">
                         <div class="modal-content">
                             <div class="modal-header ">
-                                <input style="border-radius: 15px ;" type="text" placeholder="Nombre de la nota"
+                                <input id="nombre"style="border-radius: 15px ;" type="text" placeholder="Nombre de la nota"
                                     formControlName="nombre_nota" class="form-control red-input " aria-label="Username">
 
                                 <button type="reset" value="limpiarFormulario  " class="btn-close"
@@ -87,7 +51,7 @@
  <!--ingresar texto modal-->
                         <input class="form-control" style="border-radius: 15px;"
                             placeholder=" Crea una nueva publicación" href="/feed" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop" readonly>
+                            data-bs-target= "#editModal" readonly>
 
 
  <!--ingresar imagen-->
@@ -134,21 +98,33 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             
-                                            <li><a class="dropdown-item" [routerLink]= "['/feed/',notas.id]"
-                                                    (click)="getNotasById(notas.descripcion)" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModalLong">
+                                            <li><a  class="dropdown-item" 
+
+                                                    (click)="preUpdate(notas)" data-bs-toggle="modal"
+                                                    data-bs-target= "#editModal"   >
 
                                                     <!--edit modal-->
                                                     <i class="bi bi-pencil-square">
                                                     </i> Editar
                                                 </a>
+                                            </li>
+                                                                           
+                                            <li><a  class="dropdown-item" 
 
+                                                (click)="mostrarModalConf()">
+
+                                                <!--edit modal-->
+                                                <i class="bi bi-pencil-square">
+                                                </i> EditarConfig
+                                            </a>
+                                        </li>
+                                            <li><a class="dropdown-item"  (click)="mostrarModalInfo()">
+                                                <i class="bi bi-at"></i>Etiquetar</a>
                                             </li>
                                             <li><a class="dropdown-item" (click)="eliminarNota(notas.id)">
                                                     <i class="bi bi-eraser-fill"></i> Borrar</a>
                                             </li>
-                                            <li><a class="dropdown-item">
-                                                    <i class="bi bi-at"></i>Etiquetar</a></li>
+                                           
                                         </ul>
                                     </div>
                                 </div>
@@ -181,3 +157,10 @@
 
                     </ng-template>
                 </div>
+
+<app-modal></app-modal>
+
+
+<ng-container> 
+    <app-modal-config></app-modal-config>
+</ng-container>

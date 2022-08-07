@@ -1,31 +1,15 @@
-
-<div class="modal fade " id="exampleModalLong"   tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content sombra2" style="border-radius: 20px;">
-
-      
-      <div class="modal-body ">
-
-        
-        <h4>  <i  class="bi bi-pencil-square m-2"> 
-        </i>Titulo</h4>
-        <input style="border-radius: 15px ;"  type="text" placeholder="Nuevo Título" formControlName="nombre_nota" class="form-control red-input  p-2 " aria-label="Username">
-        
-      <div class="p-2">
-
-      
-        <textarea  style="border-radius: 8px;" class="  p-2 form-control " placeholder= "getnotas" rows="15" id="message-text" >     
-        </textarea>
-      </div>
-      
-      </div>
-      <div class="modal-footer ">
-        <button type="button" class="btn btn-success bordeboton float-sm-start" >Limpiar</button>
-        <button type="button" class="btn btn-secondary bordeboton m-2" data-bs-dismiss="modal">Cerrar</button>
-        
-        <button type="button" class="btn btn-primary bordeboton "> Guardar cambios</button>
-
-      </div>
-    </div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title"  id="textarea" ></h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
   </div>
-</div>
+  <div class="modal-body">
+    <textarea class="w-100 h-100">{{nota}}</textarea>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+  </div>
+</ng-template>
+
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>

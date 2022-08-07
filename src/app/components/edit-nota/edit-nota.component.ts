@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { NotaService } from 'src/app/services/nota.service';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-nota',
@@ -9,13 +8,19 @@ import { NotaService } from 'src/app/services/nota.service';
 })
 export class EditNotaComponent implements OnInit {
 
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+   }
 
-  
-
-  constructor(private notaService : NotaService) { }
+    nota = "pecos"
+    
 
   ngOnInit(): void {
     
+  }
+  open(content: any) {
+    this.modalService.open(content);
   }
 
 

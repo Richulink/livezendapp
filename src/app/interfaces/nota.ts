@@ -1,5 +1,6 @@
-export interface Nota {
-    nombreNota?:string;
+export interface NotaInterface {
+      id?: string;
+  nombre_nota?:string;
     descripcion?: string 
-    nota?: string
+   
 }

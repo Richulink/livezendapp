@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { FeedComponent } from './components/feed/feed.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
@@ -27,7 +28,7 @@ const routes: Routes = [
   },
   { path: 'feed',component:FeedComponent},
   { path: 'feed/:id',component:FeedComponent},
-
+ 
 
 
 ];

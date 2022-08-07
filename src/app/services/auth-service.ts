@@ -12,7 +12,7 @@ export class AuthServiceService {
 
   constructor(private afauth: AngularFireAuth,
     private router: Router,
-    public afs: AngularFireAuth,) {
+   ) {
 
   }
 

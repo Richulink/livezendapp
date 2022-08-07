@@ -14,10 +14,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { EditNotaComponent } from './components/edit-nota/edit-nota.component';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfigComponent } from './components/modal-config/modal-config.component';
-import { ToastInjector, ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -30,7 +29,6 @@ import { ToastInjector, ToastrModule } from 'ngx-toastr';
     FeedComponent,
     NavbarComponent,
     ModalComponent,
-    EditNotaComponent,
     ModalConfigComponent,
   
   ],

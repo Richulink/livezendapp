@@ -1,0 +1,45 @@
+
+  <div class="modal fade " id="crearModal" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content sombra2" style="border-radius: 20px;">
+
+        <form   [formGroup]=crear_nota (ngSubmit)="agregarNota()"  >
+          
+          <div class="modal-body ">
+              <h4> <i class="bi bi-pencil-square m-2">
+                  </i >Nueva Nota</h4>
+                  
+              <input style="border-radius: 15px ;" id="nombre" type="text"   formControlName="nombre_nota" placeholder="Nuevo Título"
+                  class="form-control red-input  p-2 " aria-label="Username">
+
+
+
+
+
+
+              <div class="p-2">
+
+                  <!--[(ngModel)]= "nuevaDescripcion" -->
+
+                  <textarea style="border-radius: 8px;" class="  p-2 form-control "formControlName="descripcion"
+                      rows="15" id="message">
+                  </textarea>
+              </div>
+
+              <div class="modal-footer ">
+                <button type="button" class="btn btn-success bordeboton float-sm-start">Limpiar</button>
+                <button type="button" class="btn btn-secondary bordeboton m-2"[routerLink]= "['/feed']"
+                    data-bs-dismiss="modal">Cerrar</button>
+  
+                <button type="submit" class="btn btn-primary bordeboton " [routerLink]= "['/feed']" data-bs-dismiss="modal">Guardar cambios</button>
+             
+            </div>
+          </div>
+        </form>
+          
+          
+      </div>
+      
+  </div>
+</div>

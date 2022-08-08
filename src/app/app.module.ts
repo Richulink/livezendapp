@@ -17,6 +17,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfigComponent } from './components/modal-config/modal-config.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CrearNotaModalComponent } from './components/crear-nota-modal/crear-nota-modal.component';
 
 
 
@@ -30,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     NavbarComponent,
     ModalComponent,
     ModalConfigComponent,
+    CrearNotaModalComponent,
   
   ],
   entryComponents:[

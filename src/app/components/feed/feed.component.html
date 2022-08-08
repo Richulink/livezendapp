@@ -10,35 +10,7 @@
 
                
 
-<!-- modal crear-->
-                <div class="modal fade rounded " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <form class="modal-dialog" [formGroup]=crear_nota (ngSubmit)="agregarNota()">
-                        <div class="modal-content">
-                            <div class="modal-header ">
-                                <input id="nombre"style="border-radius: 15px ;" type="text" placeholder="Nombre de la nota"
-                                    formControlName="nombre_nota" class="form-control red-input " aria-label="Username">
 
-                                <button type="reset" value="limpiarFormulario  " class="btn-close"
-                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <textarea style="border-radius: 8px;" class="form-control red-input gray "
-                                    placeholder="Escriba la nota" formControlName="descripcion" rows="15"
-                                    id="message-text">
-
-      </textarea>
-
-                            </div>
-                            <p Style="text-align:center; color: #FF0000 ;" *ngIf="submitted && crear_nota.invalid">los
-                                elementos estan vacíos</p>
-                            <button type="submit" class="btn btn-outline-success btn-lg btn-block p-3 m-2 ">
-                                Publicar</button>
-                        </div>
-                    </form>
-                </div>
-
-<!-- /modal crear-->
                 <div class="feed ">
                     <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white sombra martop"
                         style="border-radius: 22px;">
@@ -51,7 +23,7 @@
  <!--ingresar texto modal-->
                         <input class="form-control" style="border-radius: 15px;"
                             placeholder=" Crea una nueva publicación" href="/feed" data-bs-toggle="modal"
-                            data-bs-target= "#editModal" readonly>
+                            data-bs-target= "#crearModal" readonly>
 
 
  <!--ingresar imagen-->
@@ -65,7 +37,7 @@
 
 
 
-                    <div class="bg-white border rounded mt-4 sombra" *ngFor="let notas of notas ">
+                    <div class="bg-white border rounded mt-2 sombra" *ngFor="let notas of notas ">
                         <div>
                             <div class="d-flex flex-row justify-content-between align-items-center  border-bottom ">
                                 <div class="d-flex flex-row align-items-center feed-text px-2"
@@ -109,15 +81,7 @@
                                                 </a>
                                             </li>
                                                                            
-                                            <li><a  class="dropdown-item" 
-
-                                                (click)="mostrarModalConf()">
-
-                                                <!--edit modal-->
-                                                <i class="bi bi-pencil-square">
-                                                </i> EditarConfig
-                                            </a>
-                                        </li>
+                            
                                             <li><a class="dropdown-item"  (click)="mostrarModalInfo()">
                                                 <i class="bi bi-at"></i>Etiquetar</a>
                                             </li>
@@ -134,12 +98,10 @@
                         <div class="rounded">
                             <span>
                                 <div id="fpapel" class="rounded ">
-                                    <h6 class="sombra2" style="background-color: #3b492d">
-                                        <p style="color:#ffffff"> {{notas.fechade_creacion * 1000 | date:'MM/dd h:mm a'}}</p>
-                                    </h6>
+                                    
                                     <div class="container ">
-                                        <h2 class="">{{notas.nombre_nota}}</h2>
-                                        <p> {{notas.descripcion}}</p>
+                                        <h4 style="color: #666262"  class="" >{{notas.nombre_nota}}</h4>
+                                        <p  style="color: #2b2929"> {{notas.descripcion}}</p>
 
 
                                     </div>
@@ -160,8 +122,4 @@
                 </div>
 
 <app-modal></app-modal>
-
-
-<ng-container> 
-    <app-modal-config></app-modal-config>
-</ng-container>
+<app-crear-nota-modal></app-crear-nota-modal>

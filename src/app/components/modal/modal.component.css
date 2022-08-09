@@ -4,3 +4,9 @@
 .sombra{
     box-shadow: 1px 1px rgb(184, 236, 195), -0.2em 0 0.4em rgb(166, 209, 173);
  }
+ .pos{
+    position: absolute;
+    top: 5%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}

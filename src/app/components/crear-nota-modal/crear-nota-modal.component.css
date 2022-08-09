@@ -1,0 +1,15 @@
+
+.pos{
+    position: absolute;
+    top: 5%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+}
+#fond{
+    background-color: #ec7878;
+}
+.bot-2{
+
+    position: absolute;
+    right: 100%;
+}

@@ -19,6 +19,8 @@ import { ModalConfigComponent } from './components/modal-config/modal-config.com
 import { ToastrModule } from 'ngx-toastr';
 import { CrearNotaModalComponent } from './components/crear-nota-modal/crear-nota-modal.component';
 
+import { NumbersOnlyDirective } from './directives/numbers-only.directive';
+
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { CrearNotaModalComponent } from './components/crear-nota-modal/crear-not
     ModalComponent,
     ModalConfigComponent,
     CrearNotaModalComponent,
+    NumbersOnlyDirective,
   
   ],
   entryComponents:[

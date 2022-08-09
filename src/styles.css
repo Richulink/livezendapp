@@ -3,8 +3,6 @@
 
 
 .fondo{
-
-
 background-repeat: no-repeat;
 background-position: center;
 background-size: cover;
@@ -17,3 +15,8 @@ height: 100vh;
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
  
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+
+#fond{
+    background-color: #ec7878;
+}

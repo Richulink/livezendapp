@@ -33,8 +33,8 @@ export class FeedComponent implements OnInit {
   notas: any[] = [];
 
 
-  @ViewChild("myModalInfo", { static: false }) myModalInfo: TemplateRef<any>;
-  @ViewChild("myModalConf", { static: false }) myModalConf: TemplateRef<any>;
+  @ViewChild("eliminarNota", { static: false })borrarNota: TemplateRef<any>;
+  @ViewChild("myModalConfXX", { static: false }) myModalConf: TemplateRef<any>;
 
 
   constructor(private authService: AuthServiceService,
@@ -57,21 +57,19 @@ export class FeedComponent implements OnInit {
     backdrop: 'static',
     keyboard: false
   };
-  mostrarModalInfo() {
-    this.modalService.open(this.myModalInfo).result.then(r => {
-      console.log(r);
-    }).catch(error => {
-      console.log(error);
+
+  borrarNotas() {
+    this.modalService.open(this.borrarNota).result.then(r => {
+     
     })
   }
-
-  mostrarModalConf() {
-    this.modalService.open(this.myModalConf).result.then(r => {
-      console.log("Tu respuesta ha sido: " + r);
-    }, error => {
-      console.log(error);
-    });
+  aceptar(){
+    this.notaService.eliminarNota(this.notaService.selectedNota.id);
   }
+  
+   
+
+ 
 
   ngOnInit(): void {
     this.getNotas();
@@ -116,16 +114,9 @@ export class FeedComponent implements OnInit {
     this.notaService.getNota(id);
   }
 
-
-  //[routerLink]= "['/feed/',notas.id]"
-
-  preUpdate(nota: NotaInterface) {
-
-    this.notaService.selectedNota = Object.assign({}, nota)//y pasar los datos a una variable global 
-
+  preUpdate(nota: NotaInterface) { //[routerLink]= "['/feed/',notas.id]"
+    this.notaService.selectedNota = Object.assign({}, nota)//y pasar los datos a una variable global LLAMADA selectedNota
     console.log(this.notaService.selectedNota)
-
-
   }
 }
 

@@ -73,6 +73,8 @@ export class AuthServiceService {
 }
 
 
+
+}
 /*
 async UpdateProfile(displayName: string) {
   const profile = {
@@ -81,5 +83,21 @@ async UpdateProfile(displayName: string) {
   }
   return (await this.afauth.currentUser).updateProfile(profile);
 }
-*/
+
+
+
+
+private updateUserData(user) {
+  const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+  const data: UserInterface = {
+    id: user.uid,
+    email: user.email,
+    roles: {
+      editor: true
+    }
+  }
+  return userRef.set(data, { merge: true })
 }
+
+*/
+

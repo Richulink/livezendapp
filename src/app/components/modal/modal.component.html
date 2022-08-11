@@ -20,11 +20,6 @@
             [(ngModel)]="this.notaService.selectedNota.nombre_nota" placeholder="Nuevo Título"
             class="form-control red-input  p-2 " aria-label="Username">
 
-
-
-
-
-
           <div class="p-2">
 
             <!--[(ngModel)]= "nuevaDescripcion" -->
@@ -36,7 +31,7 @@
 
           <div class="container">
 
-            <button type="button" class="btn btn-outline-secondary m-1 p-2">Limpiar</button>
+            <button type="button" class="btn btn-outline-secondary m-1 p-2" (click)="notainfo()"  >Limpiar</button>
             
 
             <button type="submit" class="btn btn-outline-primary end-0 p-2" [routerLink]="['/feed']"
@@ -57,16 +52,39 @@
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title">Atención</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.close()">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <i class="bi bi-x-lg pos2"  (click)="modal.close()" ></i>
     </div>
     <div class="modal-body">
       vas a eliminar la nota
      
-      <button type="button" class="btn btn-outline-light" (click)="modal.close()" (click)="aceptar()">aceptar</button>
+     
     </div>
-   
+    <button type="button" class="btn btn-outline-light pos3" (click)="modal.close()" (click)="aceptar()">aceptar</button>
   </div>
+
+</ng-template>
+
+
+<ng-template #notaInfo let-modal>
+ <!-- Scrollable modal -->
+ <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+
 
 </ng-template>

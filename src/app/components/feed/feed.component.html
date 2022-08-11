@@ -81,10 +81,10 @@
                                             </li>
                                                                            
                             
-                                            <li><a class="dropdown-item"  (click)="mostrarModalInfo()">
+                                            <li><a class="dropdown-item"  >
                                                 <i class="bi bi-at"></i>Etiquetar</a>
                                             </li>
-                                            <li><a class="dropdown-item" (click)="eliminarNota(notas.id)">
+                                            <li><a class="dropdown-item" (click)="borrarNotas()">
                                                     <i class="bi bi-eraser-fill"></i> Borrar</a>
                                             </li>
                                            
@@ -122,3 +122,19 @@
 
 <app-modal></app-modal>
 <app-crear-nota-modal></app-crear-nota-modal>
+
+<ng-template #eliminarNota let-modal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Atención</h5>
+        <i class="bi bi-x-lg pos2"  (click)="modal.close()" ></i>
+      </div>
+      <div class="modal-body">
+        vas a eliminar la nota
+       
+       
+      </div>
+      <button type="button" class="btn btn-outline-light pos3" (click)="modal.close()" (click)="aceptar()">aceptar</button>
+    </div>
+  
+  </ng-template>

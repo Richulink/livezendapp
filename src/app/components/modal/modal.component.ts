@@ -39,11 +39,9 @@ export class ModalComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private modalService: NgbModal,
-    private auth :AuthServiceService,
-
-    
-   
+    private auth :AuthServiceService
     ) {
+      
     this.crear_nota = this.fb.group({
       nombre_nota: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -62,10 +60,7 @@ export class ModalComponent implements OnInit {
   
   
    actualizarNota() {
-
     this.submitted = true;
-   
-   
 if ( 
   this.crear_nota.get('nombre_nota').value == '' &&
   this.crear_nota.get('descripcion').value == '' 
@@ -90,6 +85,9 @@ if (
       positionClass: 'toast-bottom-right'})
 })
 }
+   }
+   reset(){
+    this.crear_nota.reset();
    }
   
     aceptar(){

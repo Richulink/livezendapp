@@ -31,10 +31,10 @@
 
           <div class="container">
 
-            <button type="button" class="btn btn-outline-secondary m-1 p-2" (click)="notainfo()"  >Limpiar</button>
+            <button type="reset" class="btn btn-outline-secondary m-1 p-2"  >Limpiar</button>
             
 
-            <button type="submit" class="btn btn-outline-primary end-0 p-2" [routerLink]="['/feed']"
+            <button type="submit"  class="btn btn-outline-primary end-0 p-2" [routerLink]="['/feed']"
               data-bs-dismiss="modal">Guardar</button>
 
           </div>
@@ -51,7 +51,7 @@
 <ng-template #eliminarNota let-modal>
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title">Atención</h5>
+      <h5 class="modal-title">Atenciónes</h5>
       <i class="bi bi-x-lg pos2"  (click)="modal.close()" ></i>
     </div>
     <div class="modal-body">

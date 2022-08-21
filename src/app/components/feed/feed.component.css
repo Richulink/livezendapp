@@ -39,4 +39,9 @@
  }
  .box-input input{ border-left: 7px solid transparent;}
 
- 
+ pos2{
+   position: absolute;
+   top: 7%;
+   left: 90%;
+   transform: translate(-50%, -50%);
+}

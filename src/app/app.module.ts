@@ -20,6 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { CrearNotaModalComponent } from './components/crear-nota-modal/crear-nota-modal.component';
 
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
+import { PerfilComponent } from './components/perfil/perfil.component';
+
 
 
 
@@ -35,7 +37,7 @@ import { NumbersOnlyDirective } from './directives/numbers-only.directive';
     ModalConfigComponent,
     CrearNotaModalComponent,
     NumbersOnlyDirective,
-  
+    PerfilComponent,
   ],
   entryComponents:[
     
@@ -51,6 +53,7 @@ import { NumbersOnlyDirective } from './directives/numbers-only.directive';
     
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,

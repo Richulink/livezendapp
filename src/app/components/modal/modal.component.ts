@@ -2,8 +2,10 @@ import { Component, ElementRef, Input, OnInit, TemplateRef, ViewChild } from '@a
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Auth } from '@firebase/auth';
 import { NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { AuthServiceService } from 'src/app/services/auth-service';
 
 import { NotaService } from 'src/app/services/nota.service';
 import { ModalConfigComponent } from '../modal-config/modal-config.component';
@@ -36,27 +38,29 @@ export class ModalComponent implements OnInit {
     private aRoute: ActivatedRoute,
     private router: Router,
     private toastr: ToastrService,
-    private modalService: NgbModal
-   
+    private modalService: NgbModal,
+    private auth :AuthServiceService
     ) {
+      
     this.crear_nota = this.fb.group({
       nombre_nota: ['', Validators.required],
       descripcion: ['', Validators.required],
+   // user_uid : ['',this.userUid]
     })
   }
 
-  @Input() userUid: string = null;
+  // userUid = this.auth.getInstance().getCurrentUser();
+
+
+   
   @ViewChild('btnClose') btnClose: ElementRef 
 
   @ViewChild("eliminarNota", { static: false })eliminarNota: TemplateRef<any>;
-  @ViewChild("myModalConf", { static: false }) myModalConf: TemplateRef<any>;
+  @ViewChild("notaInfo", { static: false }) notaInfo: TemplateRef<any>;
   
   
    actualizarNota() {
-
     this.submitted = true;
-   
-   
 if ( 
   this.crear_nota.get('nombre_nota').value == '' &&
   this.crear_nota.get('descripcion').value == '' 
@@ -82,6 +86,9 @@ if (
 })
 }
    }
+   reset(){
+    this.crear_nota.reset();
+   }
   
     aceptar(){
      this.id = this.notaService.selectedNota.id;
@@ -100,21 +107,15 @@ if (
     backdrop: 'static',
     keyboard: false
   };
-  mostrarModalInfo() {
-    this.modalService.open(this.eliminarNota).result.then(r => {
+  notainfo() {
+    this.modalService.open(this.notaInfo).result.then(r => {
       console.log(r);
     }).catch(error => {
       console.log(error);
     })
   }
 
-  mostrarModalConf() {
-    this.modalService.open(this.myModalConf).result.then(r => {
-      console.log("Tu respuesta ha sido: " + r);
-    }, error => {
-      console.log(error);
-    });
-  }
+  
 }
 
 /*

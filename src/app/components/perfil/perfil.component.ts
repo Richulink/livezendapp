@@ -31,10 +31,14 @@ export class PerfilComponent implements OnInit {
 
   constructor(private auth: AuthServiceService,
     private notaService: NotaService){}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+  ngOnInit() {
+    
   }
+
+
  
+
   userLogged = this.auth.getUserLogger();
  
 

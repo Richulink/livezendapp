@@ -1,14 +1,22 @@
-<!-- Button trigger modal -->
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header ">
+      <b>Registro</b>
+    </div>
+    <div class="card-body p-4">
+      <label style ="float: left;" >Email o Usuario</label>
+      <input class="form-control m-2" type="email" placeholder="Introduce tu email" [(ngModel)] = "usuario.email">
 
+      <label  style ="float: left;">Contraseña</label>
+      <input class="form-control m-2" type="password" placeholder="Introduce tu contraseña"[(ngModel)] = "usuario.password"ng >
+      
+      <button class="btn btn-primary btn-block m-2" (click)="registrarse()"> registrarse </button>
+      
+      <label for="">Ya tienes una cuenta? <a routerLink= "/login" >accede</a></label>
+    </div>
+  </div>
+</div>
 
-
-
-
-
-<button type="button" class="btn btn-primary" >
-    Launch demo modal
-
-  </button>
 
   
 

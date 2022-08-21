@@ -4,7 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { FeedComponent } from './components/feed/feed.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { LoginComponent } from './components/login/login.component';
-import { ModalComponent } from './components/modal/modal.component';
+import { ModalComponent } from './components/modal/modal.component'; //nunca borrar
+import { PerfilComponent } from './components/perfil/perfil.component';
+
+
 import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
@@ -28,6 +31,12 @@ const routes: Routes = [
   },
   { path: 'feed',component:FeedComponent},
   { path: 'feed/:id',component:FeedComponent},
+  
+  {
+    path: 'perfil',
+    component:PerfilComponent
+  }
+  
  
 
 

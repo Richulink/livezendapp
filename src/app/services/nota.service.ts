@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
 import { NotaInterface } from '../interfaces/nota';
@@ -8,23 +9,11 @@ import { NotaInterface } from '../interfaces/nota';
 })
 export class NotaService {
 
-
-
-
  
-
-
  
+  constructor(private firestore: AngularFirestore, private auth: AngularFireAuth) { }
+    
 
- 
-  getDescripcion() {
-    
-    
-  }
-
-  constructor(private firestore: AngularFirestore,
-    
-    ) { }
     private booksCollection: AngularFirestoreCollection<NotaInterface> ;
     private notas: Observable<NotaInterface[]> | undefined 
     private notaDoc: AngularFirestoreDocument<NotaInterface> | undefined;
@@ -32,15 +21,10 @@ export class NotaService {
    //inicializar las variables
  
 
-
-
-
-
-  
-
   agregarNota (nuevaNota: NotaInterface): Promise <any> {
-    return this.firestore.collection('notas').add(nuevaNota);
+    return this.firestore.collection('notas').add(nuevaNota); 
   }
+  
    //Obtiene todos las notas 
    public getNotas(): Observable <any> {
 
@@ -52,7 +36,9 @@ export class NotaService {
     this.booksCollection.add(nota);
   }
  
-
+  getUserById(idUser: string): Observable<any> {
+    return this.firestore.collection('dbUsers').doc(idUser).snapshotChanges();
+  }
 
   getAllNotas() {
     this.booksCollection = this.firestore.collection<NotaInterface>('notas');

@@ -31,9 +31,14 @@ export class PerfilComponent implements OnInit {
 
   constructor(private auth: AuthServiceService,
     private notaService: NotaService){}
+
   ngOnInit() {
     
   }
+
+
+ 
+
   userLogged = this.auth.getUserLogger();
  
 

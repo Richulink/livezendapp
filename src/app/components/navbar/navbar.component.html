@@ -1,18 +1,48 @@
+
+
 <nav class="navbar sticky-sm-top fixed-top navbar-dark bg-dark ">
   <div class="container-fluid">
     <a class="navbar-brand">
       <img src="..\assets\images\hojita.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
       <b class="fs-4 m-3">Livezenda</b>
+      
     </a>
+    
+    
+    
+    <a class="navbar-brand f-right ">
+      <div class="dropdown max_footer bg-dark " width="">
+        
+      </div> 
+    </a>
+    <a class="navbar-brand f-right ">
+      <div class="dropdown max_footer bg-dark " width="">
+       
+      </div> 
+    </a>
+    <a class="navbar-brand f-right ">
+      <div class="dropdown max_footer bg-dark " width="">
+       
+      </div> 
+    </a>
+ 
+    <a class="navbar-brand f-right " >
+      <div class="dropdown max_footer bg-dark " width="">
+        <i class="bi bi-chat-dots m-4"></i>
+        <i class="bi bi-person-fill m-4"></i>
+        <i class="bi bi-bell m-4"></i>
+        
+      </div> 
+    </a>
+    
+    
+    <div class="dropdown  bg-dark">
+      
+      <button class="btn btn-outline-secondary min_footer dropdown-toggle  bg-dark" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false" *ngIf="userLogged|async as user">
 
-
-
-
-    <div class="dropdown  bg-dark " width="120">
-      <button class="btn btn-secondary dropdown-toggle  bg-dark" type="button" id="dropdownMenuButton1"
-        data-bs-toggle="dropdown" aria-expanded="false" *ngIf="userLogged|async as user; else btnIngresar">
-
-        <a class="navbar-brand" *ngIf="userLogged|async as user; else btnIngresar">
+        
+        <a class="navbar-brand" *ngIf="userLogged|async as user">
           <img style="border-radius:100%" *ngIf="user.photoURL" alt="" [src]="user.photoURL" width="30"
             class="d-inline-block align-text-top">
           <!-- {{user.displayName? user.displayName : user.email}}    -->
@@ -27,7 +57,7 @@
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
             <a class="dropdown-item " style="color:#a8a8a8">
-              <div  class="container p-2">
+              <div  class="container p-2" [routerLink]="['/perfil']">
               Mi perfil
               </div>
             </a>
@@ -70,12 +100,23 @@
           </a>
         </div>
 
+        
 
       </ul>
-
-      <ng-template #btnIngresar>
-        <button class="btn btn-secondary" routerLink="/inicio">ingresar</button>
-      </ng-template>
     </div>
+    
   </div>
+  
 </nav>
+
+
+
+<script>
+document.querySelectorAll('#nav-tab>[data-bs-toggle="tab"]').forEach(el => {
+  el.addEventListener('shown.bs.tab', () => {
+    const target = el.getAttribute('data-bs-target')
+    const scrollElem = document.querySelector(`${target} [data-bs-spy="scroll"]`)
+    bootstrap.ScrollSpy.getOrCreateInstance(scrollElem).refresh()
+  })
+})
+</script>

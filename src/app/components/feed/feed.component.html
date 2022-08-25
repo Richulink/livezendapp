@@ -8,28 +8,41 @@
 
                 <app-modal></app-modal>
 
-               
-
+                <div class="container text-center martop-2 min_footer">
+                    <div class="row">
+                      <div class="col">
+                        <i class="bi bi-chat-dots"></i>
+                      </div>
+                      <div class="col">
+                        <i class="bi bi-person-fill"></i>
+                      </div>
+                      <div class="col">
+                        <i class="bi bi-bell-fill"></i>
+                      </div>
+                    </div>
+                  </div>
+                <!--<img class="rounded-circle" src="https://lh3.googleusercontent.com/a-/AFdZucrBvHwMMDXDBIlYv_QP_5fMkkctYqukZflK-sCu=s96-c" alt="" width="45"> -->
 
                 <div class="feed ">
                     <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white sombra martop"
                         style="border-radius: 22px;">
-                        <div class="d-flex flex-row align-items-center feed-text px-2"  
-                        *ngIf= "userLogged|async as user; else btnIngresar">
-                            <img class="rounded-circle" [src] =" user.photoURL" width="35">
+                        <div class="d-flex flex-row align-items-center feed-text px-2"
+                            *ngIf="userLogged|async as user; else btnIngresar">
+                            <img class="rounded-circle" [src]=" user.photoURL" width="35">
                         </div>
 
 
- <!--ingresar texto modal-->
+                        <!--ingresar texto modal-->
                         <input class="form-control" style="border-radius: 15px;"
                             placeholder=" Crea una nueva publicación" href="/feed" data-bs-toggle="modal"
-                            data-bs-target= "#crearModal" readonly>
+                            data-bs-target="#crearModal" readonly>
 
- <!--ingresar imagen-->
+
+                        <!--ingresar imagen-->
                         <div class="feed-icon px-2">
                             <i class="fa fa-long-arrow-up text-black-50"></i>
                         </div>
-                        <button type="button" style="border-radius: 100px;" class="btn btn-secondary ">
+                        <button type="button" style="border-radius: 100px;" class=" btn btn-outline-secondary ">
                             <i class="bi bi-image" width="45"></i>
                         </button>
                     </div>
@@ -40,13 +53,13 @@
                         <div>
                             <div class="d-flex flex-row justify-content-between align-items-center  border-bottom ">
                                 <div class="d-flex flex-row align-items-center feed-text px-2"
-                                    *ngIf= "userLogged|async as user; else btnIngresar">
-                                    <img class="rounded-circle" [src]="user.photoURL" width="45">
+                                    *ngIf="userLogged|async as user; else btnIngresar">
+
+                                    <img class="rounded-circle" [src]="notas.fotoUsuario" alt="" width="45">
                                     <div class="d-flex flex-column flex-wrap ml-2 ">
 
 
-                                        <span class="font-weight-bold m-2"> {{user.displayName?
-                                            user.displayName:user.email}}
+                                        <span class="font-weight-bold m-2"> {{notas.nombreUsuario}}
                                         </span>
                                         <span class="text-black-50 time m-2">
                                             <p id="omos "> {{notas.fechade_creacion * 1000 | date:'MM/dd h:mm a'}}</p>
@@ -61,33 +74,32 @@
 
                                 <div class="p-3">
                                     <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
                                             data-bs-toggle="dropdown" aria-expanded="false">
 
                                             <i class="bi bi-book p-2"></i>
 
                                         </button>
                                         <ul class="dropdown-menu">
-                                            
-                                            <li><a  class="dropdown-item" 
 
-                                                    (click)="preUpdate(notas)" data-bs-toggle="modal"
-                                                    data-bs-target= "#editModal"   >
+                                            <li><a class="dropdown-item" (click)="preUpdate(notas)"
+                                                    data-bs-toggle="modal" data-bs-target="#editModal">
 
                                                     <!--edit modal-->
                                                     <i class="bi bi-pencil-square">
                                                     </i> Editar
                                                 </a>
                                             </li>
-                                                                           
-                            
-                                            <li><a class="dropdown-item"  (click)="mostrarModalInfo()">
-                                                <i class="bi bi-at"></i>Etiquetar</a>
+
+
+                                            <li><a class="dropdown-item">
+                                                    <i class="bi bi-at"></i>Etiquetar</a>
                                             </li>
-                                            <li><a class="dropdown-item" (click)="eliminarNota(notas.id)">
+                                            <li><a class="dropdown-item" (click)="preUpdate(notas)"
+                                                    (click)="eliminarNotaModal()">
                                                     <i class="bi bi-eraser-fill"></i> Borrar</a>
                                             </li>
-                                           
+
                                         </ul>
                                     </div>
                                 </div>
@@ -97,20 +109,215 @@
                         <div class="rounded">
                             <span>
                                 <div id="fpapel" class="rounded ">
-                                    
+
                                     <div class="container ">
-                                        <h4 style="color: #666262"  class="" >{{notas.nombre_nota}}</h4>
-                                        <p  style="color: #2b2929"> {{notas.descripcion}}</p>
-
-
+                                        <h4 style="color: #666262" class="p-4">{{notas.nombre_nota}}</h4>
+                                        <p style="color: #2b2929"> {{notas.descripcion}}</p>
                                     </div>
+                                    <img class="card-img-top rounded-0"
+                                        src="https://imgs-akamai.mnstatic.com/e9/65/e965c67fbfe5c13105333daf4204ec06.jpg?quality=75&format=pjpg&fit=bounds&width=980&height=880"
+                                        alt="Card image cap">
 
                                 </div>
                             </span>
-
                         </div>
 
+
+
+
+                        <div class="card-footer bg-white border-0 p-0">
+                            <div class="d-flex justify-content-between align-items-center py-2 mx-3 border-bottom">
+                                <div>
+
+                                </div>
+                                <div class="h7"> 0 <a> comentarios</a> 0 veces <a>compartido</a></div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center my-1">
+                                <div class="col">
+                                    <button type="button" class="btn btn-fbook btn-block btn-sm"> <i
+                                            class="fa fa-thumbs-up" aria-hidden="true"></i> Me gusta</button>
+                                </div>
+                                <div class="col">
+                                    <button type="button" class="btn btn-fbook btn-block btn-sm"><i
+                                            class="fa fa-comment" aria-hidden="true"></i> Comentar</button>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
+
+
+
+
+                    <div class="col-lg-2 max_footer offset-fixed f-left">
+                        <div class="side-right">
+                            <!-- /////////-->
+                            <div class="d-flex justify-content-between align-items-center friend-state">
+                                <div class="d-flex">
+
+                                    <div>
+                                        <i class="bi bi-envelope m-2"></i>
+                                    </div>
+                                    <div class="ml-2 h7">
+                                        Mensajería
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ////// -->
+
+                            <!-- /////////-->
+                            <div class="d-flex justify-content-between align-items-center friend-state">
+                                <div class="d-flex">
+
+                                    <div>
+                                        <i class="bi bi-briefcase-fill m-2"></i>
+                                    </div>
+                                    <div class="ml-2 h7">
+                                        cambiar a cuenta empresa
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ////// -->
+                            <!-- /////////-->
+                            <div class="d-flex justify-content-between align-items-center friend-state">
+                                <div class="d-flex">
+
+                                    <div>
+                                        <i class="bi bi-briefcase-fill m-2"></i>
+                                    </div>
+                                    <div class="ml-2 h7">
+                                        cambiar a cuenta empresa
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ////// -->
+                            <!-- /////////-->
+                            <div class="d-flex justify-content-between align-items-center friend-state">
+                                <div class="d-flex">
+
+                                    <div>
+                                        <i class="bi bi-briefcase-fill m-2"></i>
+                                    </div>
+                                    <div class="ml-2 h7">
+                                        cambiar a cuenta empresa
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- ////// -->
+
+
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-lg-2 max_footer offset-fixed f-right">
+                        <div class="side-right">
+
+
+                            <!-- /////////-->
+                            <div class="d-flex justify-content-between align-items-center friend-state ">
+                                <div class="d-flex">
+                                    <div>
+                                        <i class="bi bi-person-circle m-2"></i>
+                                    </div>
+                                    <div class="ml-2 h7">
+                                        Mi perfíl
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ////// -->
+                            <!-- /////////-->
+                            <div class="d-flex justify-content-between align-items-center friend-state ">
+                                <div class="d-flex">
+                                    <div>
+                                        <i class="bi bi-envelope m-2"></i>
+                                    </div>
+                                    <div class="ml-2 h7">
+                                        Mensajería
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ////// -->
+                             <!-- /////////-->
+                             <div class="d-flex justify-content-between align-items-center friend-state ">
+                                <div class="d-flex">
+                                    <div>
+                                        <i class="bi bi-person m-2"></i>
+                                    </div>
+                                    <div class="ml-2 h7">
+                                        Cambiar cuenta
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ////// -->
+
+
+
+                            <div class="h7  mm-2">CONTACTOS <i class="bi bi-search"> </i></div>
+                            <!-- ////// -->
+                            <div class="d-flex justify-content-between align-items-center friend-state">
+                                <div class="d-flex">
+                                    <div>
+                                        <img class="rounded-circle  " src="https://picsum.photos/80/80/?random?image=11"
+                                            width="30" alt="">
+                                    </div>
+                                    <div class="ml-2 h7 mt-2 m-2">
+                                        Pedro Israely Anomi...
+                                    </div>
+                                </div>
+                                <div class="state"></div>
+                            </div>
+                            <!-- /////////-->
+
+                            <!-- ////// -->
+                            <div class="d-flex justify-content-between align-items-center friend-state">
+                                <div class="d-flex">
+                                    <div>
+                                        <img class="rounded-circle " src="https://picsum.photos/80/80/?random?image=10"
+                                            width="30" alt="">
+                                    </div>
+                                    <div class="ml-2 h7 m-2 ">
+                                        Pedro Israely Anomi...
+                                    </div>
+                                </div>
+                                <div class="state"></div>
+                            </div>
+                            <!-- /////////-->
+
+                            <!-- ////// -->
+                            <div class="d-flex justify-content-between align-items-center friend-state">
+                                <div class="d-flex">
+                                    <div>
+                                        <img class="rounded-circle " src="https://picsum.photos/80/80/?random?image=9"
+                                            width="30" alt="">
+                                    </div>
+                                    <div class="ml-2 h7 m-2">
+                                        Pedro Israelys Anomi...
+                                    </div>
+                                </div>
+                                <div class="state"></div>
+                            </div>
+                            <!-- /////////-->
+
+
+                        </div>
+                        <form action="#">
+                            <div class="form-group mt-2">
+                                <label class="sr-only" for="wzer"></label>
+                                <input type="search" class="form-control" name="wzer" id="wzer" placeholder="Buscar">
+                            </div>
+                        </form>
+                    </div>
+
 
                     <div class="d-flex justify-content-end socials p-2 py-3"><i class="fa fa-thumbs-up"></i><i
                             class="fa fa-comments-o"></i><i class="fa fa-share"></i></div>
@@ -120,5 +327,27 @@
                     </ng-template>
                 </div>
 
-<app-modal></app-modal>
-<app-crear-nota-modal></app-crear-nota-modal>
+                <app-modal></app-modal>
+                <app-crear-nota-modal></app-crear-nota-modal>
+
+                <ng-template #eliminarNota let-modal>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Atención</h5>
+                            <i type="reset" class="bi bi-x-lg pos2" (click)="modal.close()"></i>
+                        </div>
+                        <div class="modal-body">
+                            vas a eliminar la nota
+
+
+                        </div>
+                        <button type="reset" class="btn btn-outline-light pos3" (click)="modal.close()"
+                            (click)="aceptar()">aceptar</button>
+
+
+
+                    </div>
+
+                </ng-template>
+
+          

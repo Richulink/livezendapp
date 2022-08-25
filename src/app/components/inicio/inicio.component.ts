@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service';
 
 
@@ -17,7 +18,7 @@ export class InicioComponent implements OnInit {
     password: ""
 
   }
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthServiceService ) { }
 
 
   ngOnInit(): void {
@@ -32,7 +33,7 @@ export class InicioComponent implements OnInit {
     this.authService.loginWithGoogle(email, password).then
       (
         res => {
-          console.log("se registro", res);
+          console.log("usuario logeado", res);
         })
     }
 

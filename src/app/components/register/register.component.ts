@@ -30,11 +30,14 @@ export class RegisterComponent implements OnInit {
 
     const { email, password } = this.usuario; // destructuracion de objetos
 
-    this.authService.register(email, password).then(res => {
+    this.authService.registerWithEmail(email, password).then(res => {
           console.log("se registro", res);// si el usuario esta logueado, muestra su email
         })
   }
 
   ngOnInit(): void {
+  }
+  regiterUserWithEmail( email: string, password: string ) {
+    this.authService.registerWithEmail( email, password );
   }
 }

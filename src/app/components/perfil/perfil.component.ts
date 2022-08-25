@@ -37,16 +37,17 @@ export class PerfilComponent implements OnInit {
   userLogged = this.auth.getUserLogger();
  
 
-
-  getUser(idUser: string) { // este metodo se usa para obtener el usuario por su id
-     return this.notaService.getUserById(idUser);
-    }
-  }
+}
 
   /*
   updateProfile ( ){
     this.auth.updateProfile(this.editForm.value);
  
+  }
+  
+  getUser(idUser: string) { // este metodo se usa para obtener el usuario por su id
+     return this.notaService.getUserById(idUser);
+    }
   }
 
 }

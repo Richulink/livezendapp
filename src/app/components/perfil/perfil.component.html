@@ -1,74 +1,70 @@
 <app-navbar></app-navbar>
 
 
-<div class="container-fluid  centro3">
+<div  id="fondo">
 
 
-<div class="centro" style="width: 18rem;">
-  <img class="rounded-circle m-4 img"  src="https://pbs.twimg.com/profile_images/1548046463166402561/7l8VXOeY_400x400.jpg"  width="200" alt=""> 
-  <div class="card-body">
-    <h5 id= "nom"  *ngIf="userLogged|async as user" class="card-title m-4">{{user.displayName}}  </h5>  
-    <div class="social">
-      <a class="seguidores m-2">seguidores</a>
-      <a class="seguidos m-2" >seguidos</a>
-      <a class="publicaciones m-2" >publicaciones</a>
-  </div>
-    <div>
-      <a class="btn btn-primary centro m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar perfíl</a>
-    </div>
+
+<div class=" container mt-5">
     
+  <div class="row d-flex justify-content-center">
+      
+      <div class="col-md-7">
+          
+          <div class="card p-3 py-4">
+              
+              <div class="text-center">
+                  <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle">
+              </div>
+              
+              <div class="text-center mt-3">
+                  <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
+                  <h5 class="mt-2 mb-0">Alexender Schidmt</h5>
+                  <span>UI/UX Designer</span>
+                  
+                  <div class="px-4 mt-1">
+                      <p class="fonts">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+                  
+                  </div>
+                  
+                   <ul class="social-list">
+                      <li><i class="fa fa-facebook"></i></li>
+                      <li><i class="fa fa-dribbble"></i></li>
+                      <li><i class="fa fa-instagram"></i></li>
+                      <li><i class="fa fa-linkedin"></i></li>
+                      <li><i class="fa fa-google"></i></li>
+                  </ul>
+                  
+                  <div class="buttons">
+                      
+                      <button class="btn btn-outline-primary px-4">Message</button>
+                      <button class="btn btn-primary px-4 ms-3">Contact</button>
+                  </div>
+                  
+                  
+              </div>
+              
+             
+              
+              
+          </div>
+          
+      </div>
+      
   </div>
-</div>
-</div>
-
-<!--card en el centro-->
-
-
-
-
-       
-
-<!-- Modal -->
-<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content ">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <form action="" [formGroup]= editForm method="post">
-        <img class="rounded-circle m-4 img"  src="https://pbs.twimg.com/profile_images/1548046463166402561/7l8VXOeY_400x400.jpg"  width="200" alt=""> 
-        <div  class="input">
-          <input type="file" class="form-control" id="customFile" />
-        </div>
-        
-        
-        <input class="m-2" type="text" name="" id="">
-
-        <div class="input-group">
-          <select class="form-select m-2" id="inputGroupSelect04" aria-label="Example select with button addon">
-            <option selected>Choose...</option>
-            <option value="1">femenino</option>
-            <option value="2">masculino</option>
-            <option value="3">puto de mierda</option>
-          </select>
-          <button class="btn btn-outline-secondary" type="button">Aceptar</button>
-        </div>
-      </form>
-     
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+  
 </div>
 
 
+</div>
+<!--
 
-
-
-
-
+  <div class="social-buttons mt-5"> 
+              <button class="neo-button"><i class="fa fa-facebook fa-1x"></i> </button> 
+              <button class="neo-button"><i class="fa fa-linkedin fa-1x"></i></button> 
+              <button class="neo-button"><i class="fa fa-google fa-1x"></i> </button> 
+              <button class="neo-button"><i class="fa fa-youtube fa-1x"></i> </button> 
+              <button class="neo-button"><i class="fa fa-twitter fa-1x"></i> </button> 
+          </div>
+      
+-->

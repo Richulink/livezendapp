@@ -21,6 +21,7 @@ import { CrearNotaModalComponent } from './components/crear-nota-modal/crear-not
 
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.component';
 
 
 
@@ -38,6 +39,7 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     CrearNotaModalComponent,
     NumbersOnlyDirective,
     PerfilComponent,
+    EditPerfilComponent,
   ],
   entryComponents:[
     

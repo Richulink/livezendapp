@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.component';
 
 import { FeedComponent } from './components/feed/feed.component';
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -35,6 +36,11 @@ const routes: Routes = [
   {
     path: 'perfil',
     component:PerfilComponent
+  },
+  {
+    path: 'edit',
+    component:EditPerfilComponent,
+    
   }
   
  

@@ -31,39 +31,20 @@ export class PerfilComponent implements OnInit {
 
   constructor(private auth: AuthServiceService,
     private notaService: NotaService){}
-<<<<<<< HEAD
-<<<<<<< HEAD
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
- 
-=======
 
   ngOnInit() {
     
   }
-
-
- 
-
->>>>>>> 7a949fc9f02a7ee0ccfdd13d00a8323cbe0da6ac
   userLogged = this.auth.getUserLogger();
  
-
-
   getUser(idUser: string) { // este metodo se usa para obtener el usuario por su id
      return this.notaService.getUserById(idUser);
     }
   }
-=======
-  ngOnInit() {
-    
-  }
-  userLogged = this.auth.getUserLogger();
- 
 
-}
->>>>>>> us
+  
+
+
 
   /*
   updateProfile ( ){

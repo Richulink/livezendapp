@@ -3,6 +3,7 @@ import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 
@@ -81,8 +82,7 @@ getUserById( iduser: string) {
   };
 
   eliminarNotaModal() {
-    this.modalService.open(this.Nota, { size: 'lg' });
-   
+    this.modalService.open(this.Nota, { size: 'lg' });  
   }
  
   
@@ -147,8 +147,24 @@ idRes: string;
     }
   }
 
+ let hidetext = document.getElementById('hidetext');
+ let showtext = document.getElementById(' showtext');
+ showtext.addEventListener ('click', toggleText);
+ 
 
+function toggleText() {
+  if (hidetext.style.display === 'none') {
+  } else {               
+  }
 
+}
+/*
+  verMas(nota: NotaInterface) {
+    this.notaService.selectedNota = Object.assign({}, nota)//y pasar los datos a una variable global LLAMADA selectedNota
+    console.log(this.notaService.selectedNota)
+    this.modalService.open(this.modalVerMas, { size: 'lg' });
+  }
+*/
 
 /*
          // traer de de la collecion de dbUsers el usuario que tenga el mismo id que el id de la nota

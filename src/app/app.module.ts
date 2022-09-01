@@ -18,7 +18,6 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfigComponent } from './components/modal-config/modal-config.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CrearNotaModalComponent } from './components/crear-nota-modal/crear-nota-modal.component';
-
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.component';
@@ -52,10 +51,8 @@ import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.compon
     NgxPaginationModule,
     BrowserModule,
     AppRoutingModule,
-    
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NgbModule,

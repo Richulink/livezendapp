@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 
+
 import { Observable } from 'rxjs';
 import { NotaInterface } from 'src/app/interfaces/nota';
 import { AuthServiceService } from 'src/app/services/auth-service';
@@ -24,10 +25,10 @@ export class FeedComponent implements OnInit {
   userLogged = this.authService.getUserLogger();
 
   uidUser = this.authService.getUserLogger.name;
+ 
   //notasId = this.aRoute.snapshot.params['id'];
 
-
-
+  
   submitted = false;
   id: string | null;
   crear_nota: FormGroup;
@@ -46,11 +47,12 @@ export class FeedComponent implements OnInit {
     private toastr: ToastrService) {
   }
   
-//iduser : string = "8n0mruxVS0SA0RIvPywRM5li5ZE3";
+
 
   ngOnInit(): void {
     this.getNotas();
-//this.getUserById(this.iduser);
+
+
 
   }   
   
@@ -62,12 +64,14 @@ getUserById( iduser: string) {
       console.log(res.email);
     })
 */
+     async getuid() {
+    await this.authService.user.uid;
+   }
   
 
   getUserByName(name: string) {
     this.authService.getUserByName(name);
   }
-
 
 
 
@@ -147,17 +151,7 @@ idRes: string;
     }
   }
 
- let hidetext = document.getElementById('hidetext');
- let showtext = document.getElementById(' showtext');
- showtext.addEventListener ('click', toggleText);
- 
 
-function toggleText() {
-  if (hidetext.style.display === 'none') {
-  } else {               
-  }
-
-}
 /*
   verMas(nota: NotaInterface) {
     this.notaService.selectedNota = Object.assign({}, nota)//y pasar los datos a una variable global LLAMADA selectedNota

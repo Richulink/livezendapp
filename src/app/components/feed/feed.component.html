@@ -41,6 +41,9 @@
                             <img class="rounded-circle" [src]=" user.photoURL" width="35">
                         </div>
 
+                        <!-- ngif corroborando el id del usuario-->
+
+
 
                         <!--ingresar texto modal-->
                         <input class="form-control" style="border-radius: 15px;"
@@ -63,7 +66,7 @@
                         <div>
                             <div class="d-flex flex-row justify-content-between align-items-center  border-bottom ">
                                 <div class="d-flex flex-row align-items-center feed-text px-2"
-                                    *ngIf="userLogged|async as user; else btnIngresar">
+                                    *ngIf=" userLogged|async as user; else btnIngresar">
 
                                     <img class="rounded-circle" [src]="notas.fotoUsuario" alt="" width="45">
                                     <div class="d-flex flex-column flex-wrap ml-2 ">
@@ -82,15 +85,16 @@
 
 
 
-                                <div class="p-3">
-                                    <div class="dropdown">
-                                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="p-3"  *ngIf="userLogged|async as user">
+                                    <div class="dropdown"   *ngIf="user.uid == notas.idUser"   >
+                                        <button class="btn btn-outline-secondary dropdown-toggle"  type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false"
+                                             >
 
                                             <i class="bi bi-book p-2"></i>
 
                                         </button>
-                                        <ul class="dropdown-menu">
+                                        <ul class="dropdown-menu"  > 
 
                                             <li><a class="dropdown-item" (click)="preUpdate(notas)"
                                                     data-bs-toggle="modal" data-bs-target="#editModal">
@@ -125,8 +129,8 @@
                                         <p style="color: #2b2929"> {{notas.descripcion}}</p>
                                     </div>
                                     <img class="card-img-top rounded-0"
-                                        src="https://imgs-akamai.mnstatic.com/e9/65/e965c67fbfe5c13105333daf4204ec06.jpg?quality=75&format=pjpg&fit=bounds&width=980&height=880"
-                                        alt="Card image cap">
+                                    [src]="notas.img" 
+                                        >
 
                                 </div>
                             </span>

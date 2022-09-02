@@ -21,6 +21,9 @@ import { CrearNotaModalComponent } from './components/crear-nota-modal/crear-not
 import { NumbersOnlyDirective } from './directives/numbers-only.directive';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.component';
+import { ModalImgComponent } from './components/modal-img/modal-img.component';
+import { NgxImageCompressService } from 'ngx-image-compress';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 
 
@@ -39,6 +42,8 @@ import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.compon
     NumbersOnlyDirective,
     PerfilComponent,
     EditPerfilComponent,
+    ModalImgComponent,
+
   ],
   entryComponents:[
     
@@ -54,12 +59,22 @@ import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.compon
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule, 
     NgbModule,
-    ToastrModule.forRoot()
+    // importar angular storage para angular cli 13
+    AngularFireStorageModule,
+    
+   
+    
+    ToastrModule.forRoot(),
+
+    
  
   ],
-  providers: [NgbActiveModal],
+  providers: [
+    NgbActiveModal,
+    NgxImageCompressService
+  ],
   bootstrap: [AppComponent]
  
 

@@ -23,7 +23,7 @@ export class ModalImgComponent implements OnInit {
 
   //nota: Observable<any[]>;
   notas: any[] = [];
-  uploadPercent: Observable<number>;
+  //uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   selectedFile: FileList | null;
   forma: FormGroup;
@@ -48,6 +48,7 @@ export class ModalImgComponent implements OnInit {
   idUsuario :string
   photo: string;
   nombreUsuario : string
+  uploadProgress: Observable<number>;
 
 ngOnInit(): void {  
   this.id = this.aRoute.snapshot.params['id'];
@@ -63,7 +64,14 @@ ngOnInit(): void {
 
   detectFiles(event) {
     this.selectedFile = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageSrc = reader.result as string;
+    };
+    reader.readAsDataURL(event.target.files[0]);
   }
+  
+
 
   uploadFile() {
     const nueva_imagen = this.firestore.collection('notas').ref.doc(this.id);
@@ -75,9 +83,9 @@ ngOnInit(): void {
     const filePath = nueva_imagen.id ; 
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
-
-    this.uploadPercent = task.percentageChanges();  
-
+    
+    //this.uploadPercent = task.percentageChanges();  
+    
     task.snapshotChanges().pipe(
       finalize(() => {
         fileRef.getDownloadURL().toPromise().then( (url) => {

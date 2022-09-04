@@ -77,7 +77,7 @@ export class NotaService {
     return this.firestore.collection('notas').doc(id).delete().then (() => {
       this.storage.ref(id).delete();
 
-      this.toastr.success('Su nota fue eliminada', id , { positionClass: 'toast-bottom-right' });
+     // this.toastr.success('Su nota fue eliminada', id , { positionClass: 'toast-bottom-right' });
   })
   }
 }

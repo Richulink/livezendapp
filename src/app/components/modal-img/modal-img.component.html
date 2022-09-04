@@ -24,17 +24,23 @@
                             <div class="mb-2"> 
                               <span>imagen</span>
                                 <div class="relative h-40 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
-                                    <div class="absolute">
-                                        <div class="flex flex-col items-center "> 
+                                   
+                                  <div class="absolute">
+                                        <div class="flex flex-col items-center ">
+
+                                         
+                                          
                                           <i class="fa fa-cloud-upload fa-3x text-gray-200"></i> 
                                           <span class="block text-gray-400 font-normal">arrastre su imagen aqui</span> 
-                                          <span class="block text-gray-400 font-normal">o</span>
-                                        
+                                          <span class="block text-gray-400 font-normal">o</span>  
                                            <span class="block text-blue-400 font-normal">Buscar archivo</span>
-                                        
+                                          
                                         </div>
                                     </div> 
-                                    <input type="file" accept=".jpg, .npg" (change)="detectFiles($event)" class="h-full w-full opacity-0">   
+                                    <div class="container">
+                                      <img width="130px"  [src]="imageSrc" alt=""> 
+                                    </div>
+                                    <input type="file" accept=".jpg, .npg .pdf" (change)="detectFiles($event)" class="h-full w-full opacity-0">   
                                    
                                   </div>
 
@@ -58,7 +64,7 @@
                              
                             <div class="mt-3 text-center pb-3">
     
-                              <button (click)="uploadFile()"   type="submit" class="btn btn-outline-primary end-0 p-2" [routerLink]="['/feed']"
+                              <button (click)="uploadFile()" type="submit" class="btn btn-outline-primary end-0 p-2" 
                               data-bs-dismiss="modal">Guardar</button>
                               
                             </div>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { finalize, Observable } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service';
 import { NotaService } from 'src/app/services/nota.service';
 
@@ -13,93 +15,91 @@ import { NotaService } from 'src/app/services/nota.service';
 })
 export class ModalImgComponent implements OnInit {
 
-
+  imageSrc: string = '';
  
   submitted = false;
   id: string | null;
-  crear_nota: FormGroup;
+  crearNota: FormGroup;
 
   //nota: Observable<any[]>;
   notas: any[] = [];
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+  selectedFile: FileList | null;
+  forma: FormGroup;
+  tests: Observable<any[]>;
+
 
   constructor(
     private notaService: NotaService,
     private fb: FormBuilder,
     private aRoute: ActivatedRoute,
     private auth: AuthServiceService,
-   private storage : AngularFireStorageModule
+    private storage: AngularFireStorage,
+    private firestore : AngularFirestore
   ) {
 
-    this.crear_nota = this.fb.group({
+    this.forma = fb.group ({
       nombre_nota: ['', Validators.required],
-      img: ['', Validators.required],
+
     })
-    this.id = this.aRoute.snapshot.paramMap.get('id'); // obtengo el id de la nota que se quiere editar
-    //console.log(this.id);
-   }
-
-
-   idUsuario :string
-   photo: string;
-   nombreUsuario : string
-
-   ngOnInit(): void {  
-    this.auth.getUserLogger().subscribe(user => {
-      this.idUsuario = user.uid;
-      this.photo = user.photoURL;
-       this.nombreUsuario = user.displayName;
-
- //   console.log(this.idUsuario);
-  })
-   }
-
-    onUpload(e){
-
-    }
-
   
-    
-
-/*
-const ref = this.firestore.ref(filePath);
-    const task = this.firestore.upload(filePath, file);
-    task.snapshotChanges().pipe
-*/
-
-
-   // this.crear_nota.patch value({
-   //   img: e.target.files[0]
-    //})
-  
-
-
-    getUid() {
-    console.log(this.idUsuario);
-}
-  agregarNota() { 
-    this.submitted = true;
-    if (this.crear_nota.invalid) {
-        return;
-        
-    }
-    const nuevaNota: any = {
-      nombre_nota: this.crear_nota.value.nombre_nota,
-      img: this.crear_nota.value.img,
-      fechade_creacion: new Date(),
-      idUser : this.idUsuario,
-      fotoUsuario: this.photo,
-      nombreUsuario: this.nombreUsuario
-    }
-  
-    this.notaService.agregarNota(nuevaNota).then(() => {
-      console.log('nota registrada con exito');
-      //alert('SUCCESS!! :-)');
-    }).catch(error => {
-      console.log(error);
-    })
   }
+  idUsuario :string
+  photo: string;
+  nombreUsuario : string
+
+ngOnInit(): void {  
+  this.id = this.aRoute.snapshot.params['id'];
+  this.auth.getUserLogger().subscribe(user => {
+    this.idUsuario = user.uid;
+    this.photo = user.photoURL;
+     this.nombreUsuario = user.displayName;
+
+//   console.log(this.idUsuario);
+})
+ }
+
+
+  detectFiles(event) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadFile() {
+    const nueva_imagen = this.firestore.collection('notas').ref.doc(this.id);
+    console.log(nueva_imagen.id)
+
+
+    
+    const file = this.selectedFile
+    const filePath = nueva_imagen.id ; 
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    this.uploadPercent = task.percentageChanges();  
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().toPromise().then( (url) => {
+          this.downloadURL = url;
+          
+          nueva_imagen.set({
+            nombre_nota: this.forma.value.nombre_nota,
+            img : this.downloadURL,
+            fechade_creacion: new Date(),
+            idUser : this.idUsuario,
+            nombreUsuario : this.nombreUsuario,
+            fotoUsuario: this.photo,
+            myId : nueva_imagen.id
+          })
+
+          console.log( this.downloadURL ) 
+        }).catch(err=> { console.log(err) });
+      })    
+    )
+    .subscribe()
+  }
+
 }
 
-
-
-
+ 

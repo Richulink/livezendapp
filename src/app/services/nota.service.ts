@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { ToastrService } from 'ngx-toastr';
 import { map, Observable } from 'rxjs';
 import { NotaInterface } from '../interfaces/nota';
 
@@ -8,10 +10,14 @@ import { NotaInterface } from '../interfaces/nota';
   providedIn: 'root'
 })
 export class NotaService {
+  _idUsuario: string;
+  id: string;
 
  
  
-  constructor(private firestore: AngularFirestore, private auth: AngularFireAuth) { }
+  constructor(private firestore: AngularFirestore, private auth: AngularFireAuth,
+    private storage: AngularFireStorage,
+    private toastr: ToastrService) { }
     
 
     private booksCollection: AngularFirestoreCollection<NotaInterface> ;
@@ -59,36 +65,22 @@ export class NotaService {
   
   
   ////
- 
-
-  eliminarNota(id:string): Promise<any>{
-    console.log('nota eliminada con exito');  
-    return this.firestore.collection('notas').doc(id).delete() ;
-  }
-
-   actualizarNota(data:any): Promise<any> {
+  actualizarNota(data:any): Promise<any> {
     return  this.firestore.collection('notas').doc(data.id).update(data).then (() => {
   
     console.log('nota actualizada con exito');
     });
   }
 
+  eliminarNota(id:string): Promise<any>{
+    console.log('nota eliminada con exito');  
+    return this.firestore.collection('notas').doc(id).delete().then (() => {
+      this.storage.ref(id).delete();
 
-
-   /*public createNota(data: {nombre: string, url: string}) {
-    return this.firestore.collection('notas').add(data);
+      this.toastr.success('Su nota fue eliminada', id , { positionClass: 'toast-bottom-right' });
+  })
   }
-  
-  //Obtiene una nota
-  public getNotaPorID(documentId: string) {
-    return this.firestore.collection('notas').doc(documentId).snapshotChanges();
-  }
- 
-  
-  //Actualiza la nota
-  public updateNota(documentId: string, data: any) {
-    return this.firestore.collection('notas').doc(documentId).set(data);
-  }
-*/
-
 }
+
+
+

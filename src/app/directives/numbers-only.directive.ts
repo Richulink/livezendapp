@@ -5,9 +5,10 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 })
 export class NumbersOnlyDirective {
 
-  //hace un rastreo de los eventos del input
+ 
   constructor(private ref: ElementRef) { }
-
+  
+ //hace un rastreo de los eventos del input
   @HostListener('input', ['$event']) ngOnChanges(changes: Event): void {
     //console.log(this. ref.nativeElement.value);
     const initValue =   this.ref.nativeElement.value;

@@ -66,7 +66,7 @@ export class CrearNotaModalComponent implements OnInit {
     }
     const nuevaNota: any = {
       nombre_nota: this.crear_nota.value.nombre_nota,
-      img: this.crear_nota.value.descripcion,
+      descripcion: this.crear_nota.value.descripcion,
       fechade_creacion: new Date(),
       idUser : this.idUsuario,
       fotoUsuario: this.photo,

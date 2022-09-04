@@ -1,6 +1,7 @@
 import { identifierName } from '@angular/compiler';
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -38,10 +39,12 @@ export class FeedComponent implements OnInit {
 
 
   @ViewChild("eliminarNota", { static: false })  Nota: TemplateRef<any>;
+  idUsuario: string;
   
 
 
   constructor(private authService: AuthServiceService,
+    private storage: AngularFireStorage,
     private notaService: NotaService,
     private modalService: NgbModal,
     private toastr: ToastrService) {
@@ -52,7 +55,9 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     this.getNotas();
 
-
+    this.authService.getUserLogger().subscribe(user => {
+      this.idUsuario = user.uid;
+    });
 
   }   
   
@@ -132,7 +137,9 @@ idRes: string;
   }
   eliminarNota(id: string) {
     try {
-      this.notaService.eliminarNota(id);
+      this.notaService.eliminarNota(id)
+      //this.notaService.eliminarImagen (this.idUsuario,id);
+     
     } catch (error) {
       console.log(error);
     }

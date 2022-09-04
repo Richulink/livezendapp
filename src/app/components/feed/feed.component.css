@@ -144,7 +144,7 @@ body{
 
 @media (min-width: 1200px){
    .container {
-       max-width: 1125px;
+       max-width: 1350px;
    }
    .c-navbar{
        margin-left: 7rem !important;

@@ -24,10 +24,6 @@ import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.compon
 import { ModalImgComponent } from './components/modal-img/modal-img.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-
-
-
-
 @NgModule({
   declarations: [
     NotasComponent,
@@ -60,16 +56,11 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     AngularFirestoreModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 
-    NgbModule,
-    // importar angular storage para angular cli 13
     AngularFireStorageModule,
-    
-   
-    
+    NgbModule,
+    // importar angular storage para angular cli 1
     ToastrModule.forRoot(),
 
-    
- 
   ],
   providers: [
     NgbActiveModal,

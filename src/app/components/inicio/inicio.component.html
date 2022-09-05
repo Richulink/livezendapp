@@ -2,19 +2,23 @@
 
     <div align="center" class="position-absolute top-50 start-50 translate-middle  ">
         <div style="width: 18rem;">
-            <img src="..\assets\images\hojita.png" style="width: 90px;" class="card-img-top" alt="...">
+            <img src="..\assets\images\hojita.png"  style="width: 90px;" class="card-img-top" alt="...">
             <div class="card-body">
                 <p class=" fw-bold fs-2 text-light">Livezenda</p>
                 <div >
-                    <button  href="/login" type="button" class="btn btn-outline-primary w-75 p-2" >
+                    <button [routerLink]="['/login']" type="button" class="btn btn-outline-primary w-75 p-2"  >
                         Acceder con usuario
                     </button>
+                   
                 </div>
 
                 <p></p>
+        
+
+            <p></p>
                 <div>
-                    <button type="button" class="btn btn-outline-secondary text-muted" (click)="ingresarConGoogle()">
-                        <img src="../assets/images/google.png" style="width: 30px;" class="card-img-top " alt="...">
+                    <button type="button" class="btn btn-outline-secondary text-muted w-75"  (click)="ingresarConGoogle()">
+                        <img src="../assets/images/google.png"  style="width: 30px;" >
                         Accede con google
                     </button>
                 </div>

@@ -1,3 +1,10 @@
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap" rel="stylesheet">
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
 <app-navbar></app-navbar>
 
 <!-- la clase ner tardo en andar-->
@@ -73,8 +80,9 @@
                                     <img class="rounded-circle" [src]="notas.fotoUsuario" alt="" width="45">
                                     <div class="d-flex flex-column flex-wrap ml-2 ">
 
-
-                                        <span class="font-weight-bold m-2"> {{notas.nombreUsuario}}
+                                       
+                                        <span class="font-weight-bold m-2">
+                                            <h6 style="color: #666262"  > {{notas.nombreUsuario}} </h6> 
                                         </span>
                                         <span class="text-black-50 time m-2">
                                             <p id="omos "> {{notas.fechade_creacion * 1000 | date:'MM/dd h:mm a'}}</p>

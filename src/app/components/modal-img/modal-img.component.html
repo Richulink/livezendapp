@@ -1,50 +1,57 @@
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Nueva publicación</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>  
 
-        
-        <div class="modal-body">  
-           
-                <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
-                    <div class="md:flex">
-                        <div class="w-full">
-                          <form [formGroup]=forma >
-                          <div class="p-3">
-                           
-                            <div class="mb-2"> 
-                              <span class="text-sm">Titulo</span> 
-                               <input type="text"  formControlName="nombre_nota" class="h-12 px-3 w-full border-gray-200 border rounded focus:outline-none focus:border-gray-300"  > 
-                            </div>
-    
-                            <div class="mb-2"> 
-                              <span>imagen</span>
-                                <div class="relative h-40 rounded-lg border-dashed border-2 border-gray-200 bg-white flex justify-center items-center hover:cursor-pointer">
-                                   
-                                  <div class="absolute">
-                                        <div class="flex flex-col items-center ">
+<head>
+ 
 
-                                         
-                                          
-                                          <i class="fa fa-cloud-upload fa-3x text-gray-200"></i> 
-                                          <span class="block text-gray-400 font-normal">arrastre su imagen aqui</span> 
-                                          <span class="block text-gray-400 font-normal">o</span>  
-                                           <span class="block text-blue-400 font-normal">Buscar archivo</span>
-                                          
-                                        </div>
-                                    </div> 
-                                    <div class="container">
-                                      <img width="130px"  [src]="imageSrc" alt=""> 
-                                    </div>
-                                    <input type="file" accept=".jpg, .npg .pdf" (change)="detectFiles($event)" class="h-full w-full opacity-0">   
-                                   
-                                  </div>
 
-                                <!-- 
+</head>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nueva publicación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+
+      <div class="modal-body">
+
+        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden md:max-w-lg">
+          <div class="md:flex">
+            <div class="w-full">
+              <form [formGroup]=forma>
+                <div class="p-3">
+
+                  <div class="mb-2">
+                    <span class="text-sm">Titulo</span>
+                    <input type="text" formControlName="nombre_nota"
+                      class="form-control" id="exampleFormControlInput1" placeholder="Título de la imagen">
+                     
+                    </div>
+
+                  <div class="mb-2">
+                    <span>imagen</span>
+                    <div id="background"
+                      class="hover:cursor-pointer"> 
+                      <div class="justify-content-center">
+                        <i class="bi bi-image-fill "  ></i>
+                      </div>
+                     
+                      <div id="ime" class="justify-content-center"  >
+                        <div  class="flex flex-col items-center " >
+                          <img   class="rounded mx-auto d-block" width="300px" [src]="imageSrc" alt="">        
+                        </div>
+                      </div>
+                    
+                      <input type="file" accept=".jpg, .npg .pdf" (change)="detectFiles($event)"
+                        class="h-full w-full opacity-0">
+
+                    </div>
+
+                    <!-- 
                                   <div class="flex justify-between items-center text-gray-400">
                                   <span>ingrese o arrastra la imagen</span>
                                   <span class="flex items-center "><i class="fa fa-lock mr-1"></i> secure</span>
@@ -59,27 +66,27 @@
                             *ngIf="downloadURL | async"
 
                                 -->
-                                
-                            </div>
-                             
-                            <div class="mt-3 text-center pb-3">
-    
-                              <button (click)="uploadFile()" type="submit" class="btn btn-outline-primary end-0 p-2" 
-                              data-bs-dismiss="modal">Guardar</button>
-                              
-                            </div>
-    
-                            
-                          </div>
-                          </form>
-                      
-                        </div>
-                    </div>
-                </div>                   
-        </div>
 
-       
-       
+                  </div>
+
+                  <div class="mt-3 text-center pb-3">
+
+                    <button (click)="uploadFile()" type="submit" class="btn btn-outline-primary end-0 p-2"
+                      data-bs-dismiss="modal">Guardar</button>
+
+                  </div>
+
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
       </div>
+
+
+
     </div>
   </div>
+</div>

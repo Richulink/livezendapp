@@ -24,6 +24,7 @@ import { EditPerfilComponent } from './components/edit-perfil/edit-perfil.compon
 import { ModalImgComponent } from './components/modal-img/modal-img.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { InicioComponent } from './components/inicio/inicio.component';
 @NgModule({
   declarations: [
     NotasComponent,
@@ -39,6 +40,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
     PerfilComponent,
     EditPerfilComponent,
     ModalImgComponent,
+    InicioComponent
 
   ],
   entryComponents:[

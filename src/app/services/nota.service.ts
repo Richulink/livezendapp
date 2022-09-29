@@ -30,6 +30,13 @@ export class NotaService {
   agregarNota (nuevaNota: NotaInterface): Promise <any> {
     return this.firestore.collection('notas').add(nuevaNota); 
   }
+//saber si el rol es null en base de datos dbUsers
+  getUserRole(){
+    this.firestore.collection('dbUser')
+   
+
+
+  }
   
    //Obtiene todos las notas 
    public getNotas(): Observable <any> {

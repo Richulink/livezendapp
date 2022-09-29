@@ -39,6 +39,10 @@ export class FeedComponent implements OnInit {
 
 
   @ViewChild("eliminarNota", { static: false })  Nota: TemplateRef<any>;
+  @ViewChild("editarRol", { static: false })  Rol: TemplateRef<any>;
+ 
+
+ 
   idUsuario: string;
   
 
@@ -50,17 +54,42 @@ export class FeedComponent implements OnInit {
     private toastr: ToastrService) {
   }
   
+guardar(){  
+   
+   
+}
 
+  async ngOnInit(): Promise<void> {
 
-  ngOnInit(): void {
     this.getNotas();
 
-    this.authService.getUserLogger().subscribe(user => {
+    this.authService.getUserLogger().subscribe(
+      user => {
       this.idUsuario = user.uid;
     });
-
+/*
+ await new Promise(resolve => setTimeout(resolve, 15000));
+  this.editarRol();
+       */
   }   
   
+
+
+
+ // metodo para saber si el atributo rol es nulo
+  //y que tarde 15 segundos en aparecer
+
+  // que este metodo se inicie solo
+  editarRol() {     
+                    
+    if( this.crear_nota.value.rol == null) {   {
+      this.modalService.open(this.Rol, { size: 'lg' });
+      console.log( this.crear_nota.value.rol);
+             
+    } 
+    
+    }
+    }
 /*
 getUserById( iduser: string) {
     this.authService.traerUsuarioSegunId(iduser);
@@ -91,9 +120,10 @@ getUserById( iduser: string) {
   };
 
   eliminarNotaModal() {
-    this.modalService.open(this.Nota, { size: 'lg' });  
+    this.modalService.open(this.Nota, { size: 'lg' }); // este metodo abre el modal con el template que le pasamos por parametro.
   }
- 
+
+  
   
    aceptar(){
     this.id = this.notaService.selectedNota.id;
@@ -106,8 +136,10 @@ getUserById( iduser: string) {
    
 idRes: string;
 
-  //del usuadio
-  userLogOut() {
+  //del usuadio 
+  
+     
+  userLogOut() {  
     this.authService.logout();
   }
   obtenerUsarioLogeado() {

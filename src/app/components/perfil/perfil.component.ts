@@ -7,19 +7,7 @@ import { NotaService } from 'src/app/services/nota.service';
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
-  template: `
-  <div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <p>Hello, World!</p>
-    <p><button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button></p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-  </div>
-`
+  
 })
 export class PerfilComponent implements OnInit {
 

@@ -29,8 +29,20 @@
 
             <!--[(ngModel)]= "nuevaDescripcion" -->
             <textarea style="border-radius: 8px;" class="  p-2 form-control " formControlName="descripcion" rows="15"
-              id="message">
-                  </textarea>
+              id="message"> 
+                  </textarea><div class="btn-group dropup">
+                    
+                    <input  class="form-control form-control-sm m-1" type="text" data-bs-toggle="dropdown" aria-expanded="false" placeholder="Etiqueta" >
+                    <ul class="dropdown-menu">
+                      <select class="form-select" id="inputGroupSelect01"> 
+                                    
+                        <option value="1"><input selected type="text"></option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </ul>
+                  </div>
+                  
           </div>
 
 
@@ -38,6 +50,18 @@
 
           <button type="submit" class="btn btn-outline-primary end-0 p-2" [routerLink]="['/feed']"
             data-bs-dismiss="modal">Guardar</button>
+
+<!-- Dropdown menu links -->
+            <div class="btn-group dropup">
+              <button type="button" class="btn btn-outline-primary dropdown-toggle  m-1 p-2" data-bs-toggle="dropdown" aria-expanded="false">
+                Etiqueta
+              </button>
+              <ul class="dropdown-menu">   <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Action two</a></li>
+                <li><a class="dropdown-item" href="#">Action three</a></li>
+                
+              </ul>
+            </div>
 
         </div>
       </form>

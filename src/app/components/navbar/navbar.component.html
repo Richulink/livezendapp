@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <a class="navbar-brand">
       <img src="..\assets\images\hojita.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-      <b class="fs-4 m-3">Livezenda</b>
+      <b class="fs-4 m-2">Livezenda</b>
       
     </a>
     
@@ -26,19 +26,23 @@
       </div> 
     </a>
  
+
+ 
     <a class="navbar-brand f-right " >
+      <!--
       <div class="dropdown max_footer bg-dark " width="">
         <i class="bi bi-chat-dots m-4"></i>
         <i class="bi bi-person-fill m-4"></i>
         <i class="bi bi-bell m-4"></i>
         
       </div> 
+      -->
     </a>
     
     
     <div class="dropdown  bg-dark">
       
-      <button class="btn btn-outline-secondary min_footer dropdown-toggle  bg-dark" type="button" id="dropdownMenuButton1"
+      <button class="btn btn-outline-secondary  dropdown-toggle  bg-dark" type="button" id="dropdownMenuButton1"
         data-bs-toggle="dropdown" aria-expanded="false" *ngIf="userLogged|async as user">
 
         
@@ -54,7 +58,7 @@
 
 
         <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
+        <ul class="nav nav-pills flex-column mb-auto min_footer ">
           <li class="nav-item">
             <a class="dropdown-item " style="color:#a8a8a8">
               <div  class="container p-2" [routerLink]="['/perfil']">

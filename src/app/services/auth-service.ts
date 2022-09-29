@@ -12,7 +12,8 @@ import { UserInterface } from '../interfaces/user';
 })
 export class AuthServiceService {
 
-
+  userRole:string = null;
+  nuevoUser: boolean= false;
   [x: string]: any;
 
   private filePath: string;
@@ -52,6 +53,29 @@ export class AuthServiceService {
     return this.afs.doc(`users/${user.uid}`).set(user);
   }
   
+
+
+  async loginIn( email: string,password: string) {
+    return this.afauth.signInWithEmailAndPassword(email, password)
+     .then(() => this.afauth.authState.subscribe(user => { // si el login es correcto  y el usuario no existe en la base de datos, lo crea
+      this.data.collection('dbUsers').doc(user.uid).get().subscribe(doc => {
+        if (!doc.exists) {
+          this.nuevoUser == true
+          this.data.collection('dbUsers').doc(user.uid).set({  
+            email: user.email,
+            idUser: user.uid,
+            photoUser: user.photoURL,
+            nameUser: user.displayName,
+            userRole: this.userRole
+          
+          });
+        }
+        
+        console.log(doc.data(), 'se creo en la base de datos' );
+      }
+      )
+    }))
+  }
   async loginWithGoogle(_email: string, _password: string) {
     try {
       return await this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
@@ -63,12 +87,16 @@ export class AuthServiceService {
                 email: user.email,
                 idUser: user.uid,
                 photoUser: user.photoURL,
-                nameUser: user.displayName
+                nameUser: user.displayName,
+                userRole: this.userRole
               });
+              this.nuevoUser = true
+              console.log(doc.data(), 'se creo en la base de datos' );
             }
           }
           )
         }))
+       
     } catch (error) {
       console.log("error en el login", error);
       return null;
@@ -141,23 +169,10 @@ export class AuthServiceService {
   }
 
   
-   async loginIn( email: string,password: string) {
-    return this.afauth.signInWithEmailAndPassword(email, password)
-     .then(() => this.afauth.authState.subscribe(user => { // si el login es correcto  y el usuario no existe en la base de datos, lo crea
-      this.data.collection('dbUsers').doc(user.uid).get().subscribe(doc => {
-        if (!doc.exists) {
-          this.data.collection('dbUsers').doc(user.uid).set({  
-            email: user.email,
-            idUser: user.uid,
-            photoUser: user.photoURL,
-            nameUser: user.displayName
-          });
-        }
-        console.log(doc.data(), 'se creo en la base de datos' );
-      }
-      )
-    }))
-  }
+ 
+
+
+
   async login(email: string, password: string) {
     try {
       return await this.afauth.signInWithEmailAndPassword(email, password);

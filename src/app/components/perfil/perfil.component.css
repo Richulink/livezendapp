@@ -5,138 +5,31 @@
     position: absolute;
     background-color: rgb(227, 235, 225);
 }
-body{
-    background:#eee;
-}
 
-.card{
-    border:none;
 
-    position:relative;
-    overflow:hidden;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.card:before{
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #0a0a0a;
     
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    width:4px;
-    height:100%;
-    background-color:#E1BEE7;
-    transform:scaleY(1);
-    transition:all 0.5s;
-    transform-origin: bottom
-}
-
-.card:after{
+    /* Chrome 10-25, Safari 5.1-6 
+    background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
     
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    width:4px;
-    height:100%;
-    background-color:#8E24AA;
-    transform:scaleY(0);
-    transition:all 0.5s;
-    transform-origin: bottom
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ 
+    background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+    */
+    }
+
+    @media (min-width: 1200px){
+        .container {
+            max-width: 1350px;
+        }
+        .c-navbar{
+            margin-left: 7rem !important;
+        }
+     } 
+
+#portada{
+    background-image: url("https://www.caracteristicas.co/wp-content/uploads/2018/08/bosque-1-e1577589217640.jpg");
+    height: 300px;
+
 }
-
-.card:hover::after{
-    transform:scaleY(1);
-}
-
-
-.fonts{
-    font-size:11px;
-}
-
-.social-list{
-    display:flex;
-    list-style:none;
-    justify-content:center;
-    padding:0;
-}
-
-.social-list li{
-    padding:10px;
-    color:#8E24AA;
-    font-size:19px;
-}
-
-
-.buttons button:nth-child(1){
-       border:1px solid #8E24AA !important;
-       color:#8E24AA;
-       height:40px;
-}
-
-.buttons button:nth-child(1):hover{
-       border:1px solid #8E24AA !important;
-       color:#fff;
-       height:40px;
-       background-color:#8E24AA;
-}
-
-.buttons button:nth-child(2){
-       border:1px solid #8E24AA !important;
-       background-color:#8E24AA;
-       color:#fff;
-        height:40px;
-}
-
-
-.read-more-state {
-    display: none;
-  }
-  
-  .read-more-target {
-    opacity: 0;
-    max-height: 0;
-    font-size: 0;
-    transition: .25s ease;
-  }
-  
-  .read-more-state:checked~.read-more-wrap .read-more-target {
-    opacity: 1;
-    font-size: inherit;
-    max-height: 999em;
-  }
-  
-  .read-more-state~.read-more-trigger:before {
-    content: 'Ver más';
-  }
-  
-  .read-more-state:checked~.read-more-trigger:before {
-    content: 'Ver menos';
-  }
-  
-  .read-more-trigger {
-    cursor: pointer;
-    display: inline-block;
-    padding: 0 .5em;
-    color: #666;
-    font-size: .9em;
-    line-height: 2;
-    border: 1px solid #ddd;
-    border-radius: .25em;
-  }
-  
-  
-  /* Other style */
-  
-  body {
-    padding: 2%;
-  }
-  
-  p {
-    padding: 2%;
-    background: #fff9c6;
-    color: #c7b27e;
-    border: 1px solid #fce29f;
-    border-radius: .25em;
-  }

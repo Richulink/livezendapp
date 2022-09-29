@@ -11,7 +11,7 @@
 }
 #fondo{
     height: auto;
-    background-color: rgb(227, 235, 225);
+    background-color: rgb(19, 19, 19)
 }
 #fondoRepuesto{
    height: auto;
@@ -21,13 +21,21 @@
    height: auto;
    background-color: rgb(199, 49, 49);
 }
- .sombra{
-    box-shadow: 1px 1px rgb(184, 236, 195), -0.2em 0 0.4em rgb(166, 209, 173);
- }
 
+      
+.negro{
+   background-color: #4a4a4a;
+}
+
+
+ .sombra{
+   border: #dddddd;
+ }
+/*
  .sombra2{
     box-shadow: 1px 1px rgb(48, 99, 59), -0.2em 0 0.4em rgb(166, 209, 173);
  }
+ */
  .comentarios{
     
     position: relative;
@@ -129,7 +137,7 @@ body{
 .state{
    width: 0.5rem;
    height: 0.5rem;
-   background-color: green;
+   background-color: rgb(7, 255, 7);
    border-radius: 50%
 }
 .friend-state{
@@ -138,7 +146,7 @@ body{
    transition: all 0.1s;
 }
 .friend-state:hover{
-   background-color: #f7f7f7;
+   background-color: #363636;
 }
 
 
@@ -175,3 +183,12 @@ body{
  .mm-2{
    margin-top: 10px;
  }
+
+.etiqueta{
+
+   float: left;
+
+}
+.lblanca{
+  color: #dddddd;
+}

@@ -25,6 +25,8 @@ import { ModalImgComponent } from './components/modal-img/modal-img.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { InicioComponent } from './components/inicio/inicio.component';
+
+
 @NgModule({
   declarations: [
     NotasComponent,

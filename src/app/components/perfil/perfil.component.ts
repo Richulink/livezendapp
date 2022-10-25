@@ -30,11 +30,6 @@ export class PerfilComponent implements OnInit {
     }
   }
 
- 
- 
- 
-   
-   
    function vermas(id){
     if(id=="mas"){
     document.getElementById("desplegar").style.display="block";   
